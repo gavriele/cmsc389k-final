@@ -1,0 +1,24 @@
+{
+  "name": "professordex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gavriele/cmsc389k-final.git"
+  },
+  "author": "Michael Justin & Gabriel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gavriele/cmsc389k-final/issues"
+  },
+  "homepage": "https://github.com/gavriele/cmsc389k-final#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "chalk": "^3.0.0",
+    "chart": "^0.1.2"
+  }
+}
