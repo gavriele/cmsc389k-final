@@ -14,6 +14,6 @@ const getAllGrades = async (req, res) => {
     });
 };
 
-router.get("/", getAllGrades);
+router.get('/', getAllGrades);
 
 module.exports = router;

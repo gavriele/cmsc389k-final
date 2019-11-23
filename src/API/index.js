@@ -7,6 +7,13 @@ var { mongoConnect } = require("./mongo/mongo");
 // Import routes
 var getAllGrades = require('./routes/GetAllGrades');
 var addGrade = require('./routes/addGrade');
+/*
+var dotenv = require('dotenv');
+dotenv.config();
+
+*/
+require("dotenv").config();
+
 
 // Connect to MongoDB
 mongoConnect();

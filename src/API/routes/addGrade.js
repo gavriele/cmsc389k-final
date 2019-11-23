@@ -22,6 +22,6 @@ const addGrade = async (req, res) => {
     });
 };
 
-router.post("/", addGrade);
+router.post('/', addGrade);
 
 module.exports = router;
