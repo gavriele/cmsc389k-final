@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-mongoose.Promise=global.Promise;
+
+mongoose.Promise = global.Promise;
 
 var gradeSchema = new mongoose.Schema({
     grade: {
