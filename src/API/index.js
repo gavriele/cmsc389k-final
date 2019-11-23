@@ -5,7 +5,8 @@ mongoose.Promise = global.Promise;
 var { mongoConnect } = require("./mongo/mongo");
 
 // Import routes
-var getAllGrades = require("./routes/GetAllGrades");
+var getAllGrades = require('./routes/GetAllGrades');
+var addGrade = require('./routes/addGrade');
 
 // Connect to MongoDB
 mongoConnect();
@@ -17,6 +18,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Route middleware
 app.use("/api/grades", getAllGrades);
+
+// Post Routes
+app.use("/api/post/grade", addGrade);
 
 // Liston on port 3000
 app.listen(3000, function () {
