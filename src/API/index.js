@@ -7,6 +7,7 @@ var { mongoConnect } = require("./mongo/mongo");
 // Import routes
 var getAllGrades = require('./routes/GetAllGrades');
 var addGrade = require('./routes/addGrade');
+var addForm = require('./routes/addForm');
 
 require("dotenv").config();
 
@@ -23,6 +24,7 @@ app.use("/api/grades", getAllGrades);
 
 // Post Routes
 app.use("/api/post/grade", addGrade);
+app.use("/api/post/form", addForm);
 
 // Liston on port 3000
 app.listen(3000, function () {
