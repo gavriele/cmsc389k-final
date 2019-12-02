@@ -12,12 +12,8 @@ var classSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    students: {
-        type: Number,
-        required: true
-    },
     grades: {
-        type: [Grade],
+        type: [Number],
         required: true
     }
 });

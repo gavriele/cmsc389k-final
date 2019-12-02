@@ -9,9 +9,6 @@ var gradeSchema = new mongoose.Schema({
         max: 100.0,
         required: true
     },
-    comment: {
-        type: String
-    },
     class: {
         type: String,
         required: true
@@ -24,3 +21,4 @@ var gradeSchema = new mongoose.Schema({
 
 var Grade = mongoose.model("Grade", gradeSchema);
 module.exports = Grade;
+

@@ -2,10 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 var Professor = require('../models/Professor');
+var Class = require('../models/Class');
 
 const addForm = async (req, res) => {
     console.log("Adding a professor for ", req.body.name);
     console.log("With the weakeness ", req.body.weakness);
+    console.log("With your grade: ", req.body.grade);
 
     var professor = new Professor({
         name: req.body.name,
