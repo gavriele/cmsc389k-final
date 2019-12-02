@@ -69,7 +69,7 @@ const addGrade = async (req, res) => {
     } else {
         // Add the new grade into the class
         console.log("Class does exist");
-        const updateClass = await Class.updateOne({ "title": regexClass },
+        const updateClass =  Class.update({ "title": regexClass },
             { $push: { grades: req.body.grade } },
             function (err, found) {
                 if (err) {
