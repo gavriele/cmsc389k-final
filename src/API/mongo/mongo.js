@@ -10,7 +10,7 @@ var disconnected = chalk.bold.yellow;
 // Connect to MongoDB
 const mongoDB = process.env.MONGODB_URI;
 url = "mongodb://user1:<password>@cluster0-shard-00-00-r0fic.mongodb.net:27017,cluster0-shard-00-01-r0fic.mongodb.net:27017,cluster0-shard-00-02-r0fic.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority"
-     //mongodb://user1:<password>@cluster0-shard-00-00-r0fic.mongodb.net:27017,cluster0-shard-00-01-r0fic.mongodb.net:27017,cluster0-shard-00-02-r0fic.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority
+//mongodb://user1:<password>@cluster0-shard-00-00-r0fic.mongodb.net:27017,cluster0-shard-00-01-r0fic.mongodb.net:27017,cluster0-shard-00-02-r0fic.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority
 
 console.log("mongodb", mongoDB);
 mongoConnect = () => {
