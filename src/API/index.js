@@ -5,11 +5,12 @@ mongoose.Promise = global.Promise;
 var { mongoConnect } = require("./mongo/mongo");
 
 // Import routes
-var getAllGrades = require('./routes/GetAllGrades');
-var getAllProfessor = require("./routes/GetAllProfessor");
+var getAllGrades = require('./routes/getAllGrades');
+var getAllProfessor = require("./routes/getAllProfessor");
+var getProfessor = require('./routes/getProfessor');
+
 var addGrade = require('./routes/addGrade');
 var addForm = require('./routes/addForm');
-
 require("dotenv").config();
 
 // Connect to MongoDB
@@ -23,6 +24,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Route middleware
 app.use("/api/grades", getAllGrades);
 app.use("/api/professors", getAllProfessor);
+app.get("/api/professor/:name", (req, res) => { getProfessor(req, res); });
+
 // Post Routes
 app.use("/api/post/grade", addGrade);
 app.use("/api/post/form", addForm);

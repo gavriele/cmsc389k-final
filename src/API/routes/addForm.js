@@ -6,7 +6,7 @@ var Professor = require('../models/Professor');
 const addForm = async (req, res) => {
     console.log("Adding a professor for ", req.body.name);
     console.log("With the weakeness ", req.body.weakness);
-    
+
     var professor = new Professor({
         name: req.body.name,
         strength: req.body.strength,

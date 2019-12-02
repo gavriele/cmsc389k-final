@@ -1,5 +1,4 @@
 var mongoose =  require('mongoose');
-//var review =  require('../models/Review');
 
 mongoose.Promise = global.Promise;
 
