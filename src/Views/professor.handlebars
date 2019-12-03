@@ -2,11 +2,11 @@
     <h1>{{blog_post.title}}</h1> <i>{{blog_post.time}}</i>
 </div>
 <div class="content" id="postContent" style="margin-bottom:4em;">
-    <h2>!!!{{professor.name}}!!!</h2>
+    <h2>!!!{{professor.name}}!!!</h2> <!--- Displays the professor name -->
     <div id="statsDisplay" style="padding: 0 .5em">
-        Multiplier: {{blog_post.multiplier}}<br>
-        Base Clock: {{blog_post.bclk}} MHz<br>
-        Cache/Uncore: {{blog_post.uncore}}<br>
+        Weakness: {{professor.weakness}}<br>
+        Strength: {{professor.strength}} MHz<br>
+        Classes: {{professor.classes}}<br>
         RAM Speed: {{blog_post.ramspeed}} MHz
     </div>
     <hr>
