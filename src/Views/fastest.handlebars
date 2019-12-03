@@ -1,0 +1,66 @@
+<div class="title-container">
+    <h1>Highest Clocked CPU: {{fastestPost.title}}</h1> <i>{{fastestPost.time}}</i>
+</div>
+<div class="content" id="postContent" style="margin-bottom:4em;">
+    <h2>Clock Speeds:</h2>
+    <div id="statsDisplay" style="padding: 0 .5em">
+        Multiplier: {{fastestPost.multiplier}}<br>
+        Base Clock: {{fastestPost.bclk}} MHz<br>
+        Cache/Uncore: {{fastestPost.uncore}}<br>
+        RAM Speed: {{fastestPost.ramspeed}} MHz
+    </div>
+    <hr>
+    <h2>Voltages:</h2>
+    <div style="padding: 0 .5em">
+        VCore: {{#if fastestPost.vcore}}{{fastestPost.vcore}}v{{else}}--{{/if}}<br>
+        VCCIO: {{#if fastestPost.vccio}}{{fastestPost.vccio}} Mhz{{else}}--{{/if}}<br>
+        VCCSA: {{#if fastestPost.vccsa}}{{fastestPost.vccsa}} Mhz{{else}}--{{/if}}<br>
+        RAM Voltage: {{#if fastestPost.vddr}}{{fastestPost.vddr}}v{{else}}--{{/if}}<br>
+    </div>
+    <hr>
+    <h2>Benchmarks and Price</h2>
+    <div style="padding: 0 .5em">
+        Cinebench R15: {{#if fastestPost.r15}}{{fastestPost.r15}}{{else}}--{{/if}}<br>
+        7Zip File Compression: {{#if fastestPost.7zip}}{{fastestPost.7zip}} Mb/s{{else}}-- Mb/s{{/if}}<br>
+        Price: {{#if fastestPost.price}}${{fastestPost.price}}{{else}}--{{/if}}<br>
+    </div>
+    <hr>
+    <div style="font-size:1.2em;">{{{fastestPost.content}}}</div>
+</div>
+
+
+<div class="title-container">
+    <h1>Best Synthetic Benchmarks: {{bestPost.title}}</h1> <i>{{bestPost.time}}</i>
+</div>
+<div class="content" id="postContent" style="margin-bottom:4em;">
+    <h2>Clock Speeds:</h2>
+    <div id="statsDisplay" style="padding: 0 .5em">
+        Multiplier: {{bestPost.multiplier}}<br>
+        Base Clock: {{bestPost.bclk}} MHz<br>
+        Cache/Uncore: {{bestPost.uncore}}<br>
+        RAM Speed: {{bestPost.ramspeed}} MHz
+    </div>
+    <hr>
+    <h2>Voltages:</h2>
+    <div style="padding: 0 .5em">
+        VCore: {{#if bestPost.vcore}}{{bestPost.vcore}}v{{else}}--{{/if}}<br>
+        VCCIO: {{#if bestPost.vccio}}{{bestPost.vccio}} Mhz{{else}}--{{/if}}<br>
+        VCCSA: {{#if bestPost.vccsa}}{{bestPost.vccsa}} Mhz{{else}}--{{/if}}<br>
+        RAM Voltage: {{#if bestPost.vddr}}{{bestPost.vddr}}v{{else}}--{{/if}}<br>
+    </div>
+    <hr>
+    <h2>Benchmarks and Price</h2>
+    <div style="padding: 0 .5em">
+        Cinebench R15: {{#if bestPost.r15}}{{bestPost.r15}}{{else}}--{{/if}}<br>
+        7Zip File Compression: {{#if bestPost.7zip}}{{bestPost.7zip}} Mb/s{{else}}-- Mb/s{{/if}}<br>
+        Price: {{#if bestPost.price}}${{bestPost.price}}{{else}}--{{/if}}<br>
+    </div>
+    <hr>
+    <div style="font-size:1.2em;">{{{bestPost.content}}}</div>
+</div>
+
+<script>
+    function realspeed(multiplier, bclk){
+        $("#statsDisplay").append(`Effective Clockspeed: ${multiplier*bclk}`);
+    }
+</script>
