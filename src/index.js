@@ -34,6 +34,7 @@ var getGradesFromProf = require('./API/routes/getGradesFromProf');
 var fireProfessor = require('./API/routes/fireProfessor');
 var addGrade = require('./API/routes/addGrade');
 var addForm = require('./API/routes/addForm');
+var nuke = require('./API/routes/nuke');
 
 // Get Routes
 app.use("/api/grades", getAllGrades);
@@ -47,6 +48,7 @@ app.use("/api/post/form", addForm);
 
 //Delete Routes
 app.delete("/api/fire/:name", (req, res) => { fireProfessor(req, res) });
+app.use("/api/nuke", nuke);
 
 // Functions to get to specific page
 var getHomePage = require('./Pages/home');
