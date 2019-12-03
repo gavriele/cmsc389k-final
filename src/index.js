@@ -53,6 +53,8 @@ var getHomePage = require('./Pages/home');
 var getProfessorPage = require('./Pages/professor');
 
 // Pages
+// Must request a GET/POST/DELETE in order to retrieve the proper json response.
+//  Then render the specific page with the json response.
 app.get("/", (req, res) => { getHomePage(req, res) });
 app.get("/form", (req, res) => { res.render('form') });   // probably should rename the create handlebar 
 app.get('/professor/:name', (req, res) => { getProfessorPage(req, res) });
