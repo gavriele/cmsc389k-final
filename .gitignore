@@ -1,7 +1,12 @@
 # dependencies
 week_07-expressjs-3/node_modules
 week_09-databases/node_modules
+<<<<<<< HEAD
 /node_modules
+=======
+node_modules
+
+>>>>>>> api
 # testing
 /coverage
  
