@@ -14,6 +14,7 @@ var getGradesFromProf = require('./routes/getGradesFromProf');
 var fireProfessor = require('./routes/fireProfessor');
 var addGrade = require('./routes/addGrade');
 var addForm = require('./routes/addForm');
+var curve = require('./routes/curve');
 require("dotenv").config();
 
 // Connect to MongoDB
@@ -33,6 +34,7 @@ app.get("/api/class/:title", (req, res) => { getClass(req, res) });
 app.get("/:name/grades", (req, res) => { getGradesFromProf(req, res) });
 
 // Post Routes
+app.use("/post/curve", curve);
 app.use("/post/grade", addGrade);
 app.use("/post/form", addForm);
 

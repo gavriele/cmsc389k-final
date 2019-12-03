@@ -31,6 +31,7 @@ const addGrade = async (req, res) => {
             professor: req.body.professor
         });
 
+        // const newGrade = await Grade.insertOne(grade)
         // Save grade to database
         grade.save(function (err) {
             if (err) throw err;
@@ -69,7 +70,7 @@ const addGrade = async (req, res) => {
     } else {
         // Add the new grade into the class
         console.log("Class does exist");
-        const updateClass =  Class.update({ "title": regexClass },
+        const updateClass =  Class.updateOne({ "title": regexClass },
             { $push: { grades: req.body.grade } },
             function (err, found) {
                 if (err) {
