@@ -11,10 +11,12 @@ var marked = require('marked');
 var app = express();
 var PORT = 8000;
 var request = require('request');
-var bigTags = ["Fastest","Intel i9",'Intel i7','Intel i5','Ryzen 9','Ryzen 7','Ryzen 5','Other'];
+var bigTags = ["Fastest", "Intel i9", 'Intel i7', 'Intel i5', 'Ryzen 9', 'Ryzen 7', 'Ryzen 5', 'Other'];
+const fetch = require("node-fetch");
 
 dataUtil.restoreOriginalData();
 var _DATA = dataUtil.loadData().blog_posts;
+
 
 
 /// MIDDLEWARE 
@@ -25,17 +27,92 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main', partialsDir: "views/par
 app.set('view engine', 'handlebars');
 app.use('/public', express.static('public'));
 
-app.get("/", function(req, res) {
+var server = require('./API/index');
+
+app.get("/",  async (req, res) => {
+
+
     //changing tags to be the default tags
-    var tags = dataUtil.getAllTags(_DATA);
+    //var tags = dataUtil.getAllTags(_DATA);
+
+console.log("in / function >>>>>>>>>>>>>>>>>>>")
+/*
+    let resp;
+    var options = {
+        method: 'GET',
+        url: 'http://localhost:3000/professors',
+        headers: {
+            "Content-Type": "application/json"
+        },
+    }
+     request(options, function (error, res, body) {
+        if (error) throw new Error(error);
+        resp = JSON.parse(res.body);
+        console.log(">>>>>>>>>resp ", JSON.parse(res.body));
+
+    });
+
+console.log("resp +++++++++++++++++", resp)
+*/
+   
+    const resp = await fetch('http://localhost:3000/professors', {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    });
+   // json = await resp.json();
     
+    console.log(">>>>>>>>>>>>>>>>>>", resp);
     res.render('home', {
         data: _DATA,
-        tags: tags,
-        bigTags: bigTags,
+        //tags: tags,
+        //bigTags: bigTags,
     });
+
 });
 
+/*
+var body = req.body;
+    var options = {
+        method: 'POST',
+        url: 'http://localhost:8000/api/create/',
+        headers: {
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+        form: {
+            title: "Test Title",
+            slug: 'Test Slug',
+            tags: ['test1','test2','test3'],
+            multiplier: "36",
+            bclk: "100",
+            uncore: 43,
+            ramspeed: "2133",
+            vcore: "1.25",
+            vccio: "1.0",
+            vccsa: "1.0",
+            vddr: "1.35",
+            price: "300",
+            r15: "1600",
+            preview: "Test Preview",
+            content: "Test Content",
+        }
+    };
+
+    request(options, function (error, res, body) {
+        if (error) throw new Error(error);
+        console.log(body);
+    });
+    // Add time
+
+    body.time = moment().format('MMMM Do YYYY, h:mm a');
+
+    // Save new blog post
+    _DATA.push(req.body);
+    dataUtil.saveData(_DATA);
+    //res.redirect("/");
+    */
+/*
 app.get("/api/all", function(req, res) {
     //res.render('home');
     res.json(_DATA);
@@ -97,7 +174,7 @@ app.post('/api/create', function(req, res) {
             content: "Test Content",
         }
     };
-    
+
     request(options, function (error, res, body) {
         if (error) throw new Error(error);
         console.log(body);
@@ -118,7 +195,7 @@ app.get('/post/:slug', function(req, res) {
     var bigTags = ["Intel i9",'Intel i7','Intel i5','Intel i3','Ryzen 9','Ryzen 7','Ryzen 5','Other'];
     var _slug = req.params.slug;
     var blog_post = _.findWhere(_DATA, { slug: _slug });
-    if (!blog_post) 
+    if (!blog_post)
         return res.render('404');
     res.render('post', {blog_post, tags, bigTags:bigTags});
 });
@@ -212,8 +289,10 @@ app.get('/budget', function(req, res) {
         tags: tags
     });
 });
-
+*/
 // Start listening on port PORT
+
 app.listen(PORT, function() {
     console.log('Server listening on port:', PORT);
 });
+

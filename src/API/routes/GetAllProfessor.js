@@ -10,7 +10,7 @@ const getAllProfessor = async (req, res) => {
         if (err) {
             console.log("Error in getting professor", err);
         } else {
-            console.log("Here is a professor: ", professor);
+            //console.log("Here is a professor: ", professor);
         };
     });
     return res.status(200).json({ professors });
