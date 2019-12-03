@@ -1,6 +1,34 @@
 <div class="title-container">
-    <h1 class="">{{this.title}}</h1> <i>{{time}}</i>
+    <h1>{{blog_post.title}}</h1> <i>{{blog_post.time}}</i>
 </div>
-<div class="content">
-    {{{content}}}
+<div class="content" id="postContent" style="margin-bottom:4em;">
+    <h2>Clock Speeds:</h2>
+    <div id="statsDisplay" style="padding: 0 .5em">
+        Multiplier: {{blog_post.multiplier}}<br>
+        Base Clock: {{blog_post.bclk}} MHz<br>
+        Cache/Uncore: {{blog_post.uncore}}<br>
+        RAM Speed: {{blog_post.ramspeed}} MHz
+    </div>
+    <hr>
+    <h2>Voltages:</h2>
+    <div id="voltsDisplay" style="padding: 0 .5em">
+        VCore: {{#if blog_post.vcore}}{{blog_post.vcore}}v{{else}}--{{/if}}<br>
+        VCCIO: {{#if blog_post.vccio}}{{blog_post.vccio}} Mhz{{else}}--{{/if}}<br>
+        VCCSA: {{#if blog_post.vccsa}}{{blog_post.vccsa}} Mhz{{else}}--{{/if}}<br>
+        RAM Voltage: {{#if blog_post.vddr}}{{blog_post.vddr}}v{{else}}--{{/if}}<br>
+    </div>
+    <hr>
+    <h2>Benchmarks and Price</h2>
+    <div id="voltsDisplay" style="padding: 0 .5em">
+        Cinebench R15: {{#if blog_post.r15}}{{blog_post.r15}}{{else}}--{{/if}}<br>
+        7Zip File Compression: {{#if blog_post.7zip}}{{blog_post.7zip}} Mb/s{{else}}-- Mb/s{{/if}}<br>
+        Price: {{#if blog_post.price}}${{blog_post.price}}{{else}}--{{/if}}<br>
+    </div>
+    <div style="font-size:1.2em;">{{{blog_post.content}}}</div>
 </div>
+
+<script>
+    function realspeed(multiplier, bclk){
+        $("#statsDisplay").append(`Effective Clockspeed: ${multiplier*bclk}`);
+    }
+</script>

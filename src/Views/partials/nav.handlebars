@@ -1,11 +1,60 @@
 <div class="nav">
-    <h1>Blog</h1>
-    {{#if tags}}
-    <div class="tags">
-    	{{#each tags}}
-	        <a href="/tag/{{this}}" class="tag">{{this}}</a>
-        {{/each}}
-    </div>
+    <h1><a href="/" id="pageTitle">Silicon Lottery Stats</a></h1>
+    {{#if bigTags}}
+      <hr>
+      <div id="tags">
+        {{#each bigTags}}
+              <div class="dropdown">                
+                  <button onclick="myFunction(`{{this}}`)" class="dropbtn">{{this}}</button>
+                  <div id={{this}} class="dropdown-content">
+                  </div>
+              </div>
+          {{/each}}
+      </div>
     {{/if}}
 </div>
-<br><hr>
+
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction(input) {
+  //var ts = {{tags}}.split(",")
+  console.log(input)
+  if(input != "Other"){
+    var theTag = input.toLowerCase().split(" ");
+    if(input.toLowerCase() == "fastest")
+      window.location.pathname=`/${theTag[theTag.length-1]}`;
+    else
+      window.location.pathname=`/tag/${theTag[theTag.length-1]}`
+  }
+  else{
+    $("#Other").empty();
+    var elem = document.getElementById(input)
+    var tagList = "{{tags}}".split(",")
+    for(e of tagList){
+      var theElement = `<div><a href="/tag/${e}">${e}</a></div>`;
+      console.log(e);
+      console.log("taglist:");
+      console.log(theElement)
+      if(!tagList.includes(theElement))
+        $("#Other").append(theElement);
+    }
+    elem.classList.toggle("show");
+  }
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>

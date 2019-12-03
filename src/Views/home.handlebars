@@ -1,22 +1,73 @@
-{{#if tag}}
-<h2>Recent Posts in {{tag}}:</h2> 
-{{else}}
-<h2>Recent Posts:</h2> 
-{{/if}}
+<div id="bar">
+	{{#if tag}}
+		<h2 onload="loaded()" id="fixpls" class="tagTitle">{{tag}} posts</h2> 
+	{{else}}
+		<h2 class="tagTitle">Recent Posts:</h2> 
+	{{/if}}
+	<input type="text" placeholder="Search" id="searchbar">
+</div>
 
-{{#each data}}
-<article>
-	<h2 class="title">{{this.title}}</h2> <i>{{time}}</i>
-	<hr>
-	<div class="content">
-	    {{{this.preview}}}...
-	</div>
-	<a href="/post/{{this.slug}}">Read more...</a>
-</article>
-{{else}}
+<div id="postBtn">
+	<button type="submit" onClick="window.location.pathname='/create'">Post your processor</button>
+</div>
 
-<article>
-    <h1>There are no blog posts yet. :(</h1>
-    <a href="/create">Write your first post!</a>
+<br>
+<div class="twoCols">
+	{{#each data}}
+		<a href="/post/{{this.slug}}">
+			<article>
+				<h2 class="title">{{this.title}}</h2> <i>{{time}}</i>
+				<hr>
+				<div class="content">
+					{{#if this.preview}}
+						{{{this.preview}}}...
+					{{/if}}
+				</div>
+			</article>
+		</a>
+	
+	{{else}}
+	<article id="noDisplay" >
+		<h1>There are no posts yet :(</h1>
+		<h4>Try posting your own processor to see how it compares to other overclocks!</h4>
+	</article>
+	{{/each}}
+</div>
+<article id="noDisplay" style="display:none;">
+	<h1>There are no posts yet :(</h1>
+	<h4>Try posting your own processor to see how it compares to other overclocks!</h4>
 </article>
-{{/each}}
+
+<script type="text/javascript">
+	$("#searchbar").on("keyup",function(){ 
+		var elements = document.getElementsByClassName("twoCols")[0].getElementsByTagName("a");
+		var noElements = true;
+		for (entry of elements) {
+			if(!entry.innerText.toLowerCase().includes($("#searchbar").val().toLowerCase()))
+				entry.style.display="none";
+			else{ //if something matches search and it is displayed
+				entry.style.display="block";
+				noElements = false;
+			}
+		}
+		if(noElements == true){
+			document.getElementById("noDisplay").style.display="block";
+			console.log("displaying thingy")
+		}
+		else{
+			document.getElementById("noDisplay").style.display="none";
+			console.log("Stop displaying thingy");
+		}
+	}); 
+
+	$(document).ready(function(){
+		var it = $("#fixpls").text();
+
+		if(it.charAt(0)=="i"){
+			$("#fixpls").prepend("Intel ");
+		}
+		else if(it.charAt(0)==5||it.charAt(0)==7||it.charAt(0)==9){
+			$("#fixpls").prepend("Ryzen ");
+		}
+	});
+</script>
