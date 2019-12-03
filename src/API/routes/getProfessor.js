@@ -7,6 +7,7 @@ const getProfessor = async (req, res) => {
     const professor = await Professor.find({ "name": regex }, function (err, prof) {
         if (err) {
             console.log("Error in getting professor", err);
+            return res.status(400).json({error: "Could not get  professor"});
         } else {
             console.log("Here is a professor: ", prof);
         };

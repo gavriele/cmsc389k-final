@@ -7,11 +7,14 @@ var { mongoConnect } = require("./mongo/mongo");
 // Import routes
 var getAllGrades = require('./routes/getAllGrades');
 var getAllProfessor = require("./routes/getAllProfessor");
+var getAllClasses = require("./routes/getAllClasses");
 var getProfessor = require('./routes/getProfessor');
+var getClass = require('./routes/getClass');
 var getGradesFromProf = require('./routes/getGradesFromProf');
 var fireProfessor = require('./routes/fireProfessor');
 var addGrade = require('./routes/addGrade');
 var addForm = require('./routes/addForm');
+var curve = require('./routes/curve');
 require("dotenv").config();
 
 // Connect to MongoDB
@@ -23,12 +26,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Route middleware
-app.use("/grades", getAllGrades);
-app.use("/professors", getAllProfessor);
-app.get("/professor/:name", (req, res) => { getProfessor(req, res) });
+app.use("/api/grades", getAllGrades);
+app.use("/api/professors", getAllProfessor);
+app.use("/api/classes", getAllClasses);
+app.get("/api/professor/:name", (req, res) => { getProfessor(req, res) });
+app.get("/api/class/:title", (req, res) => { getClass(req, res) });
 app.get("/:name/grades", (req, res) => { getGradesFromProf(req, res) });
 
 // Post Routes
+app.use("/post/curve", curve);
 app.use("/post/grade", addGrade);
 app.use("/post/form", addForm);
 
