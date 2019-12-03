@@ -50,10 +50,12 @@ app.delete("/api/fire/:name", (req, res) => { fireProfessor(req, res) });
 
 // Functions to get to specific page
 var getHomePage = require('./Pages/home');
+var getProfessorPage = require('./Pages/professor');
 
 // Pages
 app.get("/", (req, res) => { getHomePage(req, res) });
 app.get("/form", (req, res) => { res.render('form') });   // probably should rename the create handlebar 
+app.get('/professor/:name', (req, res) => { getProfessorPage(req, res) });
 
 // Start listening on port PORT
 app.listen(PORT, function () {
