@@ -9,6 +9,7 @@ const getAllProfessor = async (req, res) => {
     const professors = await Professor.find({}, function (err, professor) {
         if (err) {
             console.log("Error in getting professor", err);
+            return;
         } else {
             console.log("Here is a professor: ", professor);
         };
