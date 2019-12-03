@@ -53,7 +53,7 @@ var getHomePage = require('./Pages/home');
 
 // Pages
 app.get("/", (req, res) => { getHomePage(req, res) });
-app.get("/form", (req, res) => { res.render('create') });   // probably should rename the create handlebar 
+app.get("/form", (req, res) => { res.render('form') });   // probably should rename the create handlebar 
 
 // Start listening on port PORT
 app.listen(PORT, function () {
