@@ -1,8 +1,8 @@
 <div id="bar">
 	{{#if tag}}
-		<h2 onload="loaded()" id="fixpls" class="tagTitle">{{tag}} posts</h2> 
+	<h2 onload="loaded()" id="fixpls" class="tagTitle">{{tag}} posts</h2>
 	{{else}}
-		<h2 class="tagTitle">Recent Posts:</h2> 
+	<h2 class="tagTitle">Recent Posts:</h2>
 	{{/if}}
 	<input type="text" placeholder="Search" id="searchbar">
 </div>
@@ -14,63 +14,80 @@
 <br>
 <div class="twoCols">
 	{{#each data}}
-		<a href="/post/{{this.slug}}">
-			<article>
-				<p> testing
-					'{{this.name}}'
-					
-				</p>
-				<h2 class="title">{{this.title}}</h2> <i>{{time}}</i>
-				<hr>
-				<div class="content">
-					{{#if this.preview}}
-						{{{this.preview}}}...
-					{{/if}}
-				</div>
-			</article>
-		</a>
-	
+	<a href="/post/{{this.slug}}">
+		<!-- 
+			currently no slug 
+			Structure of the json 
+			 {
+            "strength": ["Pepsi"],
+            "weakness": ["Coke"],
+            "classes": ["CMSC216"],
+            "_id": "5de48e2440f3f031087a6e2c",
+            "name": "Nelson",
+            "reviews": [{
+                "_id": "5de48e2440f3f031087a6e2d",
+                "rating": 5,
+                "comment": "Pepsi > Coke",
+                "author": "Pepsi"
+            }],
+            "__v": 0
+        }
+		-->
+		<article>
+			<h2 class="title">{{this.name}}</h2>
+			<hr>
+			<div class="content">
+				{{this.classes}}
+				{{this.weakness}}
+				{{this.strength}}
+				{{#if this.reviews}}
+				<!-- maybe need a for loop for each review -->
+				{{{this.reviews}}}...
+				{{/if}}
+			</div>
+		</article>
+	</a>
 	{{else}}
-	<article id="noDisplay" >
-		<h1>There are no posts yet :(</h1>
-		<h4>Try posting your own processor to see how it compares to other overclocks!</h4>
+	<article id="noDisplay">
+		<h1>There are no professors yet :(</h1>
+		<h4>Try adding professors!</h4>
 	</article>
 	{{/each}}
 </div>
 <article id="noDisplay" style="display:none;">
-	<h1>There are no posts yet :(</h1>
-	<h4>Try posting your own processor to see how it compares to other overclocks!</h4>
+	<h1>There are no professors yet :(</h1>
+	<h4>Try adding professors!</h4>
 </article>
 
 <script type="text/javascript">
-	$("#searchbar").on("keyup",function(){ 
+	$("#searchbar").on("keyup", function () {
 		var elements = document.getElementsByClassName("twoCols")[0].getElementsByTagName("a");
 		var noElements = true;
 		for (entry of elements) {
-			if(!entry.innerText.toLowerCase().includes($("#searchbar").val().toLowerCase()))
-				entry.style.display="none";
-			else{ //if something matches search and it is displayed
-				entry.style.display="block";
+			if (!entry.innerText.toLowerCase().includes($("#searchbar").val().toLowerCase()))
+				entry.style.display = "none";
+			else { //if something matches search and it is displayed
+				entry.style.display = "block";
 				noElements = false;
 			}
 		}
-		if(noElements == true){
-			document.getElementById("noDisplay").style.display="block";
+		if (noElements == true) {
+			document.getElementById("noDisplay").style.display = "block";
 			console.log("displaying thingy")
 		}
-		else{
-			document.getElementById("noDisplay").style.display="none";
+		else {
+			document.getElementById("noDisplay").style.display = "none";
 			console.log("Stop displaying thingy");
 		}
-	}); 
+	});
 
-	$(document).ready(function(){
+	$(document).ready(function () {
 		var it = $("#fixpls").text();
 
-		if(it.charAt(0)=="i"){
+		if (it.charAt(0) == "i") {
 			$("#fixpls").prepend("Intel ");
 		}
-		else if(it.charAt(0)==5||it.charAt(0)==7||it.charAt(0)==9){
+		else if (it.charAt(0) == 5 || it.charAt(0) == 7 || it.charAt(0) == 9) {
 			$("#fixpls").prepend("Ryzen ");
 		}
 	});

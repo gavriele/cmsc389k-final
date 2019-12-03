@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 
 const homePage = async (req, res) => {
-    let resp = await fetch('http://localhost:3000/professors', {
+    let resp = await fetch('http://localhost:3000/api/professors', {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

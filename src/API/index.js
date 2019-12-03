@@ -36,6 +36,8 @@ app.use("/post/form", addForm);
 app.delete("/fire/:name", (req, res) => { fireProfessor(req, res) });
 
 // Liston on port 3000
+/*
 app.listen(3000, function () {
     console.log('App listening on port 3000!');
 });
+*/
