@@ -14,10 +14,8 @@ var request = require('request');
 var bigTags = ["Fastest", "Intel i9", 'Intel i7', 'Intel i5', 'Ryzen 9', 'Ryzen 7', 'Ryzen 5', 'Other'];
 const fetch = require("node-fetch");
 
-dataUtil.restoreOriginalData();
-var _DATA = dataUtil.loadData().blog_posts;
-
-
+//dataUtil.restoreOriginalData();
+var _DATA = dataUtil.loadData().professors;
 
 /// MIDDLEWARE 
 app.use(logger('dev'));
@@ -29,89 +27,17 @@ app.use('/public', express.static('public'));
 
 var server = require('./API/index');
 
-app.get("/",  async (req, res) => {
+// Pages
+
+// Pages
+var getHomePage = require('./Pages/home');
+var getProfFormPage = require('./Pages/profForm');
+
+app.get("/", (req, res) => { getHomePage(req, res) });
+app.get("/form", (req, res) => { getProfFormPage(req, res) });
 
 
-    //changing tags to be the default tags
-    //var tags = dataUtil.getAllTags(_DATA);
 
-console.log("in / function >>>>>>>>>>>>>>>>>>>")
-/*
-    let resp;
-    var options = {
-        method: 'GET',
-        url: 'http://localhost:3000/professors',
-        headers: {
-            "Content-Type": "application/json"
-        },
-    }
-     request(options, function (error, res, body) {
-        if (error) throw new Error(error);
-        resp = JSON.parse(res.body);
-        console.log(">>>>>>>>>resp ", JSON.parse(res.body));
-
-    });
-
-console.log("resp +++++++++++++++++", resp)
-*/
-   
-    const resp = await fetch('http://localhost:3000/professors', {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      }
-    });
-   // json = await resp.json();
-    
-    console.log(">>>>>>>>>>>>>>>>>>", resp);
-    res.render('home', {
-        data: _DATA,
-        //tags: tags,
-        //bigTags: bigTags,
-    });
-
-});
-
-/*
-var body = req.body;
-    var options = {
-        method: 'POST',
-        url: 'http://localhost:8000/api/create/',
-        headers: {
-            'content-type': 'application/x-www-form-urlencoded'
-        },
-        form: {
-            title: "Test Title",
-            slug: 'Test Slug',
-            tags: ['test1','test2','test3'],
-            multiplier: "36",
-            bclk: "100",
-            uncore: 43,
-            ramspeed: "2133",
-            vcore: "1.25",
-            vccio: "1.0",
-            vccsa: "1.0",
-            vddr: "1.35",
-            price: "300",
-            r15: "1600",
-            preview: "Test Preview",
-            content: "Test Content",
-        }
-    };
-
-    request(options, function (error, res, body) {
-        if (error) throw new Error(error);
-        console.log(body);
-    });
-    // Add time
-
-    body.time = moment().format('MMMM Do YYYY, h:mm a');
-
-    // Save new blog post
-    _DATA.push(req.body);
-    dataUtil.saveData(_DATA);
-    //res.redirect("/");
-    */
 /*
 app.get("/api/all", function(req, res) {
     //res.render('home');
@@ -292,7 +218,7 @@ app.get('/budget', function(req, res) {
 */
 // Start listening on port PORT
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
     console.log('Server listening on port:', PORT);
 });
 
