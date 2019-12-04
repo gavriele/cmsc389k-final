@@ -35,6 +35,7 @@ var getProfessor = require('./API/routes/getProfessor');
 var getGradesFromProf = require('./API/routes/getGradesFromProf');
 var fireProfessor = require('./API/routes/fireProfessor');
 var addGrade = require('./API/routes/addGrade');
+var addGradeSocket = require('./API/routes/addGradeSocket');
 var curve = require('./API/routes/curve');
 var addForm = require('./API/routes/addForm');
 var getClass = require('./API/routes/getClass');
@@ -72,8 +73,15 @@ app.get("/class/:title", (req, res) => { getClassPage(req, res) });
 io.on('connection', function(socket) {
     console.log('NEW connection');
 
-    socket.on('prof submitted', function(msg) {
-        console.log("Client submitted new professor: " + msg);
+    socket.on('new grade', function(msg) {
+        console.log("Client submitted new grade: " + JSON.stringify(msg));
+        if(addGradeSocket(msg)){
+        	console.log("sending succ msg...");
+        	io.emit('grade added', "" + msg.review.author + " successfully added a grade to " + msg.class);
+        } else {
+        	console.log("sending fail msg...");
+        	io.emit('grade added', "" + msg.review.author + "failed to add a grade to " + msg.class);
+        }
     })
     
     socket.on('disconnect', function() {
@@ -85,4 +93,3 @@ io.on('connection', function(socket) {
 http.listen(PORT, function () {
     console.log('Server listening on port:', PORT);
 });
-

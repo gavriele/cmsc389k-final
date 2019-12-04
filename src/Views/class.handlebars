@@ -2,10 +2,10 @@
     <h1>Info about Class</i>
 </div>
 <div class="content" id="postContent" style="margin-bottom:4em;">
-    <h2>{{class.title}}</h2>
+    <h2 id="class_title">{{class.title}}</h2>
     <!--- Displays the professor name -->
     <div id="statsDisplay" style="padding: 0 .5em">
-        Professor: {{class.professor}}<br>
+        Professor: <div id="prof_title">{{class.professor}}</div><br>
     
     </div>
     <hr>
@@ -27,7 +27,17 @@
         </article>
         {{/each}}
     </div>
+
+    <h2>Add a new grade to this class:</h2>
+    <form id="the_form" action="">
+        grade<input id="grade" autocomplete="off" />
+        rating<input id="rating" autocomplete="off" />
+        comment<input id="comment" autocomplete="off" />
+        author<input id="author" autocomplete="off" />
+        <button>Submit</button>
+    </form>
     <hr>
+</div>
     <!--
     <h2>Benchmarks and Price</h2>
     <div id="voltsDisplay" style="padding: 0 .5em">
@@ -38,8 +48,32 @@
     <div style="font-size:1.2em;">{{{blog_post.content}}}</div>
 </div>
 -->
-    <script>
-        function realspeed(multiplier, bclk) {
-            $("#statsDisplay").append(`Effective Clockspeed: ${multiplier * bclk}`);
-        }
-    </script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+
+    function realspeed(multiplier, bclk) {
+        $("#statsDisplay").append(`Effective Clockspeed: ${multiplier * bclk}`);
+    }
+
+    var socket = io();
+    $('#the_form').submit(function(){ //When send button is pressed
+        var grade = parseFloat($('#grade').val());
+        var class_str = $('#class_title').text();
+        var rating = parseFloat($('#rating').val());
+        var comment = $('#comment').val();
+        var author = $('#author').val();
+        var professor = $('#prof_title').text();
+        console.log("grade is " + grade + " class is " + class_str + " rating is " + rating + " comment is " + comment + " author is " + author + " professor is " + professor); 
+      socket.emit('new grade', {grade: grade, class: class_str, review: {rating: rating, comment: comment, author: author}, professor: professor});
+      $('#grade').val('');
+        $('#rating').val('');
+        $('#comment').val('');
+        $('#author').val('');
+      return false; //Ensures the page does not reload
+    });
+
+    socket.on('grade added', function(msg) {
+        console.log("grade added msg: " + msg);
+        alert(msg);
+    });
+</script>
