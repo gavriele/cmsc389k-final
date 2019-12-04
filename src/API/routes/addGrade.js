@@ -12,7 +12,6 @@ const addGrade = async (req, res) => {
     // Check if the professor exist. If exist tell user to add
     // the new professor
     let regexProf = new RegExp('^' + req.body.professor + '$', "i");
-
     const profExist = await Professor.findOne({ "name": regexProf }, function (err, result) {
         if (err) {
             return res.status(400).json({ error: "Professor doesn't exist you moron!" });
@@ -28,14 +27,13 @@ const addGrade = async (req, res) => {
             professor: req.body.professor
         });
 
-console.log("saving grade");
         // Save grade to database
         grade.save(function (err) {
-            if (err) return console.log("err in saving," , err); // return err;//res.status(400).json({ error: "Saving the grade to db fail!" });
+            if (err) return console.log("err in saving,", err); // return err;//res.status(400).json({ error: "Saving the grade to db fail!" });
             console.log("save the grade model to database")
         });
 
-        const updateProfessorReviews = await Professor.update({ "name": regexProf },
+        const updateProfessorReviews = Professor.updateOne({ "name": regexProf },
             { $push: { reviews: req.body.review } },
             function (err, found) {
                 if (err) {
@@ -44,13 +42,11 @@ console.log("saving grade");
                     console.log("You update the professor reviews");
                 };
             });
-            
+
     } else {
-        
         console.log("Professor doesn't exist.");
         return res.status(400).json({ error: "Professor doesn't exist. Please add the professor in form." })
-    }
-
+    };
     // Check if class exist
     let regexClass = new RegExp('^' + req.body.class + '$', "i");
     console.log("looking for a class: ", req.body.class);
@@ -90,7 +86,6 @@ console.log("saving grade");
             });
         return res.status(200).json({ success: "You add the new grade to class " });
     };
-
 };
 
 router.post('/', addGrade);

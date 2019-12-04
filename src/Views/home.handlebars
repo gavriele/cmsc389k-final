@@ -14,35 +14,13 @@
 <div class="twoCols">
 	{{#each data}}
 	<a href="/professor/{{this.name}}">
-		<!-- 
-			currently no slug 
-			Structure of the json 
-			 {
-            "strength": ["Pepsi"],
-            "weakness": ["Coke"],
-            "classes": ["CMSC216"],
-            "_id": "5de48e2440f3f031087a6e2c",
-            "name": "Nelson",
-            "reviews": [{
-                "_id": "5de48e2440f3f031087a6e2d",
-                "rating": 5,
-                "comment": "Pepsi > Coke",
-                "author": "Pepsi"
-            }],
-            "__v": 0
-        }
-		-->
 		<article>
 			<h2 class="title">{{this.name}}</h2>
 			<hr>
 			<div class="content">
-				{{this.classes}}
-				{{this.weakness}}
-				{{this.strength}}
-				{{#if this.reviews}}
-				<!-- maybe need a for loop for each review -->
-				{{{this.reviews}}}...
-				{{/if}}
+				Class: {{this.classes}} <br>
+				Weakness: {{this.weakness}}<br>
+				Strength: {{this.strength}}<br>
 			</div>
 		</article>
 	</a>

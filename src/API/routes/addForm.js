@@ -7,14 +7,13 @@ var Class = require('../models/Class');
 const addForm = async (req, res) => {
     console.log("Adding a professor for ", req.body.name);
     console.log("With the weakeness ", req.body.weakness);
-    console.log("With your grade: ", req.body.grade);
 
     let regexProf = new RegExp('^' + req.body.name + '$', "i");
-    const profExist = await Class.findOne({ "title": regexProf }, function (err, result) {
+    const profExist = await Professor.findOne({ "name": regexProf }, function (err, result) {
         if (err) {
             return console.log("Error in getting class", err);
         } else {
-            console.log("Prof doesn't exist yet");
+            console.log("Prof doesn't exist yet", result);
         };
     });
 

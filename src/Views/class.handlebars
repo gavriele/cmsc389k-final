@@ -1,37 +1,28 @@
 <div class="title-container">
-    <h1>{{blog_post.title}}</h1> <i>{{blog_post.time}}</i>
+    <h1>Info about Class</i>
 </div>
 <div class="content" id="postContent" style="margin-bottom:4em;">
-    <h2>{{professor.name}}</h2>
+    <h2>{{class.title}}</h2>
     <!--- Displays the professor name -->
     <div id="statsDisplay" style="padding: 0 .5em">
-        Weakness: {{professor.weakness}}<br>
-        Strength: {{professor.strength}} MHz<br>
-        <!-- Need a #each maybe -->
-        Classes:  <a href="/class/{{professor.classes}}"> {{professor.classes}}</a>
-       
+        Professor: {{class.professor}}<br>
+    
     </div>
     <hr>
 
-    <h2>Reviews:</h2>
+    <h2>Grades:</h2>
     <div id="voltsDisplay" style="padding: 0 .5em">
-        {{#each reviews}}
+        {{#each grades}}
+    
             <article>
-                <h2 class="title">Author: {{this.author}}</h2>
+                <h2 class="title">Grade: {{this}}</h2>
                 <hr>
-                <div class="content">
-                    Rating: {{this.rating}}
-                    <p>
-                        {{this.comment}}
-                    </p>
-                    {{this.weakness}}
                 
-                </div>
             </article>
         </a>
         {{else}}
         <article id="noDisplay">
-            <h1>There are no reviews yet :(</h1>
+            <h1>There are no grades yet :(</h1>
             <h4>Try adding a grade!</h4>
         </article>
         {{/each}}
