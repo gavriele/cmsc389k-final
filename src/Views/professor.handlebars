@@ -2,22 +2,40 @@
     <h1>{{blog_post.title}}</h1> <i>{{blog_post.time}}</i>
 </div>
 <div class="content" id="postContent" style="margin-bottom:4em;">
-    <h2>!!!{{professor.name}}!!!</h2> <!--- Displays the professor name -->
+    <h2>{{professor.name}}</h2>
+    <!--- Displays the professor name -->
     <div id="statsDisplay" style="padding: 0 .5em">
         Weakness: {{professor.weakness}}<br>
         Strength: {{professor.strength}} MHz<br>
         Classes: {{professor.classes}}<br>
-        RAM Speed: {{blog_post.ramspeed}} MHz
     </div>
     <hr>
-    <h2>Voltages:</h2>
+
+    <h2>Reviews:</h2>
     <div id="voltsDisplay" style="padding: 0 .5em">
-        VCore: {{#if blog_post.vcore}}{{blog_post.vcore}}v{{else}}--{{/if}}<br>
-        VCCIO: {{#if blog_post.vccio}}{{blog_post.vccio}} Mhz{{else}}--{{/if}}<br>
-        VCCSA: {{#if blog_post.vccsa}}{{blog_post.vccsa}} Mhz{{else}}--{{/if}}<br>
-        RAM Voltage: {{#if blog_post.vddr}}{{blog_post.vddr}}v{{else}}--{{/if}}<br>
+        {{#each reviews}}
+            <article>
+                <h2 class="title">Author: {{this.author}}</h2>
+                <hr>
+                <div class="content">
+                    Rating: {{this.rating}}
+                    <p>
+                        {{this.comment}}
+                    </p>
+                    {{this.weakness}}
+                
+                </div>
+            </article>
+        </a>
+        {{else}}
+        <article id="noDisplay">
+            <h1>There are no professors yet :(</h1>
+            <h4>Try adding professors!</h4>
+        </article>
+        {{/each}}
     </div>
     <hr>
+    <!--
     <h2>Benchmarks and Price</h2>
     <div id="voltsDisplay" style="padding: 0 .5em">
         Cinebench R15: {{#if blog_post.r15}}{{blog_post.r15}}{{else}}--{{/if}}<br>
@@ -26,9 +44,9 @@
     </div>
     <div style="font-size:1.2em;">{{{blog_post.content}}}</div>
 </div>
-
-<script>
-    function realspeed(multiplier, bclk){
-        $("#statsDisplay").append(`Effective Clockspeed: ${multiplier*bclk}`);
-    }
-</script>
+-->
+    <script>
+        function realspeed(multiplier, bclk) {
+            $("#statsDisplay").append(`Effective Clockspeed: ${multiplier * bclk}`);
+        }
+    </script>
