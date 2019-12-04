@@ -1,7 +1,8 @@
 var mongoose =  require('mongoose');
+var reviewSchema = require('./Review');
 
 mongoose.Promise = global.Promise;
-
+/*
 var reviewSchema = new mongoose.Schema({
     rating: {
         type: Number,
@@ -17,7 +18,7 @@ var reviewSchema = new mongoose.Schema({
         required: true
     }
 });
-
+*/
 var professorSchema = new mongoose.Schema({
     name: {
         type: String,

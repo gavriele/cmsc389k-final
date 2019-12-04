@@ -8,7 +8,6 @@ var Professor = require('../models/Professor');
 // Adding grade to mongo
 const addGrade = async (req, res) => {
     console.log("Adding a grade for ", req.body.class);
-    console.log("With a grade: ", req.body.grade);
 
     // Check if the professor exist. If exist tell user to add
     // the new professor
@@ -16,28 +15,38 @@ const addGrade = async (req, res) => {
 
     const profExist = await Professor.findOne({ "name": regexProf }, function (err, result) {
         if (err) {
-            return console.log("Error in getting professor", err);
-        } else {
-            console.log("Here is a professor: ", result);
-        };
+            return res.status(400).json({ error: "Professor doesn't exist you moron!" });
+        }
     });
     if (profExist) {
         console.log("Professor exist.");
         // Create new grade
         var grade = new Grade({
             grade: parseInt(req.body.grade),
-            comment: req.body.comment,
+            review: req.body.review,
             class: req.body.class,
             professor: req.body.professor
         });
 
-        // const newGrade = await Grade.insertOne(grade)
+console.log("saving grade");
         // Save grade to database
         grade.save(function (err) {
-            if (err) throw err;
-            //res.send('Succesfully inserted grade.');
+            if (err) return console.log("err in saving," , err); // return err;//res.status(400).json({ error: "Saving the grade to db fail!" });
+            console.log("save the grade model to database")
         });
+
+        const updateProfessorReviews = await Professor.update({ "name": regexProf },
+            { $push: { reviews: req.body.review } },
+            function (err, found) {
+                if (err) {
+                    return res.status(400).json({ error: "Error in finding professor" });
+                } else {
+                    console.log("You update the professor reviews");
+                };
+            });
+            
     } else {
+        
         console.log("Professor doesn't exist.");
         return res.status(400).json({ error: "Professor doesn't exist. Please add the professor in form." })
     }
@@ -64,22 +73,22 @@ const addGrade = async (req, res) => {
             grades: parseInt(req.body.grade)
         });
         newClass.save(function (err) {
-            if (err) throw err;
-            return res.send('Create a new class');
+            if (err) return res.status(400).json({ error: "New class creation fail!" });
+            return res.status(200).json({ success: "Saving the grade to db!" });
         });
     } else {
         // Add the new grade into the class
         console.log("Class does exist");
-        const updateClass =  Class.updateOne({ "title": regexClass },
+        const updateClass = Class.updateOne({ "title": regexClass },
             { $push: { grades: req.body.grade } },
             function (err, found) {
                 if (err) {
-                    return console.log("Error in finding class", err);
+                    return res.status(400).json({ error: "Error in finding class" });
                 } else {
-                    console.log("You update the class: ", found);
+                    console.log("You update the class");
                 };
             });
-        return res.status(200).json("You update the class ");
+        return res.status(200).json({ success: "You add the new grade to class " });
     };
 
 };

@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var reviewSchema = require('./Review');
 
 mongoose.Promise = global.Promise;
 
@@ -11,6 +12,10 @@ var gradeSchema = new mongoose.Schema({
     },
     class: {
         type: String,
+        required: true
+    },
+    review: {
+        type: [reviewSchema],
         required: true
     },
     professor: {
