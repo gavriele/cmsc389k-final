@@ -35,6 +35,7 @@ var fireProfessor = require('./API/routes/fireProfessor');
 var addGrade = require('./API/routes/addGrade');
 var curve = require('./API/routes/curve');
 var addForm = require('./API/routes/addForm');
+var getClass = require('./API/routes/getClass');
 var nuke = require('./API/routes/nuke');
 
 // Get Routes
@@ -42,6 +43,7 @@ app.use("/api/grades", getAllGrades);
 app.use("/api/professors", getAllProfessor);
 app.get("/api/professor/:name", (req, res) => { getProfessor(req, res) });
 app.get("/api/:name/grades", (req, res) => { getGradesFromProf(req, res) });
+app.get("/api/class/:title", (req, res) => { getClass(req, res) });
 
 // Post Routes
 app.use("/api/post/grade", addGrade);
@@ -55,13 +57,14 @@ app.use("/api/nuke", nuke);
 // Functions to get to specific page
 var getHomePage = require('./Pages/home');
 var getProfessorPage = require('./Pages/professor');
-
+var getClassPage = require('./Pages/class');
 // Pages
 // Must fetch a GET/POST/DELETE request from /api/... in order to retrieve the proper json response.
 // Then render the specific page with the json response.
 app.get("/", (req, res) => { getHomePage(req, res) });
 app.get("/form", (req, res) => { res.render('form') });   // probably should rename the create handlebar 
 app.get('/professor/:name', (req, res) => { getProfessorPage(req, res) });
+app.get("/class/:title", (req, res) => { getClassPage(req, res) });
 
 // Start listening on port PORT
 app.listen(PORT, function () {
