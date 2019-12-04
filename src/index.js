@@ -33,6 +33,7 @@ var getProfessor = require('./API/routes/getProfessor');
 var getGradesFromProf = require('./API/routes/getGradesFromProf');
 var fireProfessor = require('./API/routes/fireProfessor');
 var addGrade = require('./API/routes/addGrade');
+var curve = require('./API/routes/curve');
 var addForm = require('./API/routes/addForm');
 var nuke = require('./API/routes/nuke');
 
@@ -44,6 +45,7 @@ app.get("/api/:name/grades", (req, res) => { getGradesFromProf(req, res) });
 
 // Post Routes
 app.use("/api/post/grade", addGrade);
+app.use("/api/post/curve", curve);
 app.use("/api/post/form", addForm);
 
 //Delete Routes
