@@ -50,7 +50,7 @@ app.use("/api/post/grade", addGrade);
 app.use("/api/post/curve", curve);
 app.use("/api/post/form", addForm);
 
-//Delete Routes
+//Delete Routes 
 app.delete("/api/fire/:name", (req, res) => { fireProfessor(req, res) });
 app.use("/api/nuke", nuke);
 
