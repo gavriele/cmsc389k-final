@@ -45,16 +45,6 @@ async function addGradeSocket(new_grade) {
                     console.log("You update the professor reviews");
                 };
             });
-        // Add the class to the Professor's classes set
-        const updateProfessorClass = Professor.updateOne({ "name": regexProf },
-            { $addToSet: { classes: req.body.class } },
-            function (err, found) {
-                if (err) {
-                    return res.status(400).json({ error: "Error in finding professor" });
-                } else {
-                    console.log("You update the professor classes");
-                };
-            });
     } else {
         console.log("Professor doesn't exist.");
         return false;
