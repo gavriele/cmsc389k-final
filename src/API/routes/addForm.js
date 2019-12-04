@@ -9,17 +9,30 @@ const addForm = async (req, res) => {
     console.log("With the weakeness ", req.body.weakness);
     console.log("With your grade: ", req.body.grade);
 
-    var professor = new Professor({
-        name: req.body.name,
-        strength: req.body.strength,
-        weakness: req.body.weakness,
-        classes: req.body.classes,
-        reviews: req.body.reviews
+    let regexProf = new RegExp('^' + req.body.name + '$', "i");
+    const profExist = await Class.findOne({ "title": regexProf }, function (err, result) {
+        if (err) {
+            return console.log("Error in getting class", err);
+        } else {
+            console.log("Prof doesn't exist yet");
+        };
     });
-    professor.save(function (err) {
-        if (err) throw err;
-        return res.send('Successfully insert professor');
-    });
+
+    if (!profExist) {
+        var professor = new Professor({
+            name: req.body.name,
+            strength: req.body.strength,
+            weakness: req.body.weakness,
+            classes: req.body.classes,
+            reviews: req.body.reviews
+        });
+        professor.save(function (err) {
+            if (err) throw err;
+            return res.status(200).json({ success: 'Successfully insert professor' });
+        });
+    } else {
+        return res.status(400).json({ error: 'Professor already exist you moron!' });
+    }
 };
 
 router.post('/', addForm);
