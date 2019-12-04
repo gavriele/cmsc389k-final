@@ -15,6 +15,9 @@ var bigTags = ["Fastest", "Intel i9", 'Intel i7', 'Intel i5', 'Ryzen 9', 'Ryzen 
 var fetch = require("node-fetch");
 var { mongoConnect } = require('./API/mongo/mongo');
 
+//dataUtil.restoreOriginalData();
+var _DATA = dataUtil.loadData().professor;
+
 /// MIDDLEWARE 
 app.use(logger('dev'));
 app.use(bodyParser.json());

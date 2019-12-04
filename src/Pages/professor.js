@@ -9,7 +9,6 @@ const professorPage = async (req, res) => {
     });
     await resp.json()
         .then((json) => {
-            console.log("trying to get name ", json.professor[0].name)
             return res.render('professor', { professor: json.professor[0], reviews: json.professor[0].reviews });
         });
 };

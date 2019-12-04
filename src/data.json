@@ -1,1 +1,61 @@
-{"professors":[{},{"professors":[{"strength":["Sadist"],"weakness":["bruteforce"],"classes":["CMSC351"],"_id":"5de33a5307f6af44a0690485","name":"Kruskal","reviews":[{"_id":"5de33a5307f6af44a0690486","rating":5,"comment":"The curve","author":"The terp"}],"__v":0},{"strength":["Pepsi"],"weakness":["Coke"],"classes":["CMSC216"],"_id":"5de48e2440f3f031087a6e2c","name":"Nelson","reviews":[{"_id":"5de48e2440f3f031087a6e2d","rating":5,"comment":"Pepsi > Coke","author":"Pepsi"}],"__v":0}]},{"professors":[{"strength":["Sadist"],"weakness":["bruteforce"],"classes":["CMSC351"],"_id":"5de33a5307f6af44a0690485","name":"Kruskal","reviews":[{"_id":"5de33a5307f6af44a0690486","rating":5,"comment":"The curve","author":"The terp"}],"__v":0},{"strength":["Pepsi"],"weakness":["Coke"],"classes":["CMSC216"],"_id":"5de48e2440f3f031087a6e2c","name":"Nelson","reviews":[{"_id":"5de48e2440f3f031087a6e2d","rating":5,"comment":"Pepsi > Coke","author":"Pepsi"}],"__v":0}]},{"professors":[{"strength":["Sadist"],"weakness":["bruteforce"],"classes":["CMSC351"],"_id":"5de33a5307f6af44a0690485","name":"Kruskal","reviews":[{"_id":"5de33a5307f6af44a0690486","rating":5,"comment":"The curve","author":"The terp"}],"__v":0},{"strength":["Pepsi"],"weakness":["Coke"],"classes":["CMSC216"],"_id":"5de48e2440f3f031087a6e2c","name":"Nelson","reviews":[{"_id":"5de48e2440f3f031087a6e2d","rating":5,"comment":"Pepsi > Coke","author":"Pepsi"}],"__v":0}]},{"professors":[{"strength":["Sadist"],"weakness":["bruteforce"],"classes":["CMSC351"],"_id":"5de33a5307f6af44a0690485","name":"Kruskal","reviews":[{"_id":"5de33a5307f6af44a0690486","rating":5,"comment":"The curve","author":"The terp"}],"__v":0},{"strength":["Pepsi"],"weakness":["Coke"],"classes":["CMSC216"],"_id":"5de48e2440f3f031087a6e2c","name":"Nelson","reviews":[{"_id":"5de48e2440f3f031087a6e2d","rating":5,"comment":"Pepsi > Coke","author":"Pepsi"}],"__v":0}]},{"professors":[{"strength":["Sadist"],"weakness":["bruteforce"],"classes":["CMSC351"],"_id":"5de33a5307f6af44a0690485","name":"Kruskal","reviews":[{"_id":"5de33a5307f6af44a0690486","rating":5,"comment":"The curve","author":"The terp"}],"__v":0},{"strength":["Pepsi"],"weakness":["Coke"],"classes":["CMSC216"],"_id":"5de48e2440f3f031087a6e2c","name":"Nelson","reviews":[{"_id":"5de48e2440f3f031087a6e2d","rating":5,"comment":"Pepsi > Coke","author":"Pepsi"}],"__v":0}]},{"professors":[{"strength":["Sadist"],"weakness":["bruteforce"],"classes":["CMSC351"],"_id":"5de33a5307f6af44a0690485","name":"Kruskal","reviews":[{"_id":"5de33a5307f6af44a0690486","rating":5,"comment":"The curve","author":"The terp"}],"__v":0},{"strength":["Pepsi"],"weakness":["Coke"],"classes":["CMSC216"],"_id":"5de48e2440f3f031087a6e2c","name":"Nelson","reviews":[{"_id":"5de48e2440f3f031087a6e2d","rating":5,"comment":"Pepsi > Coke","author":"Pepsi"}],"__v":0}]},{"professors":[{"strength":["Sadist"],"weakness":["bruteforce"],"classes":["CMSC351"],"_id":"5de33a5307f6af44a0690485","name":"Kruskal","reviews":[{"_id":"5de33a5307f6af44a0690486","rating":5,"comment":"The curve","author":"The terp"}],"__v":0},{"strength":["Pepsi"],"weakness":["Coke"],"classes":["CMSC216"],"_id":"5de48e2440f3f031087a6e2c","name":"Nelson","reviews":[{"_id":"5de48e2440f3f031087a6e2d","rating":5,"comment":"Pepsi > Coke","author":"Pepsi"}],"__v":0}]},{"professors":[{"strength":["Sadist"],"weakness":["bruteforce"],"classes":["CMSC351"],"_id":"5de33a5307f6af44a0690485","name":"Kruskal","reviews":[{"_id":"5de33a5307f6af44a0690486","rating":5,"comment":"The curve","author":"The terp"}],"__v":0},{"strength":["Pepsi"],"weakness":["Coke"],"classes":["CMSC216"],"_id":"5de48e2440f3f031087a6e2c","name":"Nelson","reviews":[{"_id":"5de48e2440f3f031087a6e2d","rating":5,"comment":"Pepsi > Coke","author":"Pepsi"}],"__v":0}]},{"professors":[{"strength":["Sadist"],"weakness":["bruteforce"],"classes":["CMSC351"],"_id":"5de33a5307f6af44a0690485","name":"Kruskal","reviews":[{"_id":"5de33a5307f6af44a0690486","rating":5,"comment":"The curve","author":"The terp"}],"__v":0},{"strength":["Pepsi"],"weakness":["Coke"],"classes":["CMSC216"],"_id":"5de48e2440f3f031087a6e2c","name":"Nelson","reviews":[{"_id":"5de48e2440f3f031087a6e2d","rating":5,"comment":"Pepsi > Coke","author":"Pepsi"}],"__v":0}]},{"professors":[{"strength":["Sadist"],"weakness":["bruteforce"],"classes":["CMSC351"],"_id":"5de33a5307f6af44a0690485","name":"Kruskal","reviews":[{"_id":"5de33a5307f6af44a0690486","rating":5,"comment":"The curve","author":"The terp"}],"__v":0},{"strength":["Pepsi"],"weakness":["Coke"],"classes":["CMSC216"],"_id":"5de48e2440f3f031087a6e2c","name":"Nelson","reviews":[{"_id":"5de48e2440f3f031087a6e2d","rating":5,"comment":"Pepsi > Coke","author":"Pepsi"}],"__v":0}]}]}
+{
+    "professors": [
+        {
+            "strength": ["Pepsi"],
+            "weakness": ["Coke"],
+            "classes": ["CMSC216"],
+            "_id": "5de70f4b0d05251d90010cca",
+            "name": "Nelson",
+            "reviews": [{
+                "_id": "5de70f4b0d05251d90010ccb",
+                "rating": 5,
+                "comment": "Pepsi > Coke",
+                "author": "Pepsi"
+            }, {
+                "_id": "5de70f4e0d05251d90010cce",
+                "rating": 5,
+                "comment": "testing4",
+                "author": "testing4!"
+            }, {
+                "_id": "5de70f7f0d05251d90010cd2",
+                "rating": 5,
+                "comment": "testing5",
+                "author": "testing5!"
+            }, {
+                "_id": "5de7181f32b14a5a00fd92c5",
+                "rating": 5,
+                "comment": "testing5",
+                "author": "testing5!"
+            }, {
+                "_id": "5de7184d32b14a5a00fd92c8",
+                "rating": 5,
+                "comment": "testing6",
+                "author": "testing6!"
+            }, {
+                "_id": "5de7186b32b14a5a00fd92cb",
+                "rating": 5,
+                "comment": "testing10",
+                "author": "testing10!"
+            }],
+            "__v": 0
+        }, {
+            "strength": ["Pepsi"],
+            "weakness": ["Bruteforce"],
+            "classes": ["CMSC330"],
+            "_id": "5de72f698b9ad94f7c59f0a9",
+            "name": "Kruskal",
+            "reviews": [{
+                "_id": "5de72f698b9ad94f7c59f0aa",
+                "rating": 5,
+                "comment": "Pepsi > Coke",
+                "author": "Pepsi"
+            }, {
+                "_id": "5de72f8c8b9ad94f7c59f0ad",
+                "rating": 5,
+                "comment": "Yo i pass",
+                "author": "F"
+            }],
+            "__v": 0
+        }
+    ]
+}

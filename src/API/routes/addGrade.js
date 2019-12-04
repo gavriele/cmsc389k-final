@@ -33,6 +33,7 @@ const addGrade = async (req, res) => {
             console.log("save the grade model to database")
         });
 
+        // Add the reviews to the professor's review array
         const updateProfessorReviews = Professor.updateOne({ "name": regexProf },
             { $push: { reviews: req.body.review } },
             function (err, found) {
@@ -42,6 +43,18 @@ const addGrade = async (req, res) => {
                     console.log("You update the professor reviews");
                 };
             });
+
+        // Add the class to the Professor's classes set
+        const updateProfessorClass = Professor.updateOne({ "name": regexProf },
+            { $addToSet: { classes: req.body.class } },
+            function (err, found) {
+                if (err) {
+                    return res.status(400).json({ error: "Error in finding professor" });
+                } else {
+                    console.log("You update the professor classes");
+                };
+            });
+            
 
     } else {
         console.log("Professor doesn't exist.");
