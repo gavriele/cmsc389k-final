@@ -14,6 +14,8 @@ var request = require('request');
 var bigTags = ["Fastest", "Intel i9", 'Intel i7', 'Intel i5', 'Ryzen 9', 'Ryzen 7', 'Ryzen 5', 'Other'];
 var fetch = require("node-fetch");
 var { mongoConnect } = require('./API/mongo/mongo');
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 //dataUtil.restoreOriginalData();
 var _DATA = dataUtil.loadData().professor;
@@ -36,6 +38,7 @@ var getProfessor = require('./API/routes/getProfessor');
 var getGradesFromProf = require('./API/routes/getGradesFromProf');
 var fireProfessor = require('./API/routes/fireProfessor');
 var addGrade = require('./API/routes/addGrade');
+var addGradeSocket = require('./API/routes/addGradeSocket');
 var curve = require('./API/routes/curve');
 var addForm = require('./API/routes/addForm');
 var getClass = require('./API/routes/getClass');
@@ -69,8 +72,27 @@ app.get("/form", (req, res) => { res.render('form') });   // probably should ren
 app.get('/professor/:name', (req, res) => { getProfessorPage(req, res) });
 app.get("/class/:title", (req, res) => { getClassPage(req, res) });
 
-// Start listening on port PORT
-app.listen(PORT, function () {
-    console.log('Server listening on port:', PORT);
+//socket post
+io.on('connection', function(socket) {
+    console.log('NEW connection');
+
+    socket.on('new grade', function(msg) {
+        console.log("Client submitted new grade: " + JSON.stringify(msg));
+        if(addGradeSocket(msg)){
+        	console.log("sending succ msg...");
+        	io.emit('grade added', "" + msg.review.author + " successfully added a grade to " + msg.class);
+        } else {
+        	console.log("sending fail msg...");
+        	io.emit('grade added', "" + msg.review.author + "failed to add a grade to " + msg.class);
+        }
+    })
+    
+    socket.on('disconnect', function() {
+        console.log('User has disconnected');
+    });
 });
 
+// Start listening on port PORT
+http.listen(PORT, function () {
+    console.log('Server listening on port:', PORT);
+});
