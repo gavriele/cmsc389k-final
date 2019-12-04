@@ -1,6 +1,6 @@
 <h1>Post your own silicon to see how it stacks up</h1>
 <article>
-    <form method="POST" action="/create" autocomplete="off" >
+    <form id="the_form" method="POST" action="/create" autocomplete="off" >
         <div>
             <label>Manufacturer</label>
             <div class="manufacturer" id="intel">
@@ -88,6 +88,7 @@
     </form>
 </article>
 
+<script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
     $(".manufacturer").on("change", function(){
         var selector = '<option value="i9">i9</option>\n<option value="i7">i7</option>\n<option value="i5">i5</option>\n<option value="i3">i3</option>';
@@ -121,4 +122,15 @@
             return true;
         }
     }
+
+    // SOCKET CODE: MOVE THIS TO HANDLEBARS PAGE WHERE WE WANT IT 
+    var socket = io();
+    $('#the_form').submit(function(){ //When send button is pressed
+        var title = $('#posttitle').val();
+        console.log("title is " + title); 
+        socket.emit('prof submitted', title);
+      return false; //Ensures the page does not reload
+    });
+
+    // END OF SOCKET CODE
 </script>

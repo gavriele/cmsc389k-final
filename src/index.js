@@ -14,6 +14,8 @@ var request = require('request');
 var bigTags = ["Fastest", "Intel i9", 'Intel i7', 'Intel i5', 'Ryzen 9', 'Ryzen 7', 'Ryzen 5', 'Other'];
 var fetch = require("node-fetch");
 var { mongoConnect } = require('./API/mongo/mongo');
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 /// MIDDLEWARE 
 app.use(logger('dev'));
@@ -63,8 +65,21 @@ app.get("/", (req, res) => { getHomePage(req, res) });
 app.get("/form", (req, res) => { res.render('form') });   // probably should rename the create handlebar 
 app.get('/professor/:name', (req, res) => { getProfessorPage(req, res) });
 
+//socket post
+io.on('connection', function(socket) {
+    console.log('NEW connection');
+
+    socket.on('prof submitted', function(msg) {
+        console.log("Client submitted new professor: " + msg);
+    })
+    
+    socket.on('disconnect', function() {
+        console.log('User has disconnected');
+    });
+});
+
 // Start listening on port PORT
-app.listen(PORT, function () {
+http.listen(PORT, function () {
     console.log('Server listening on port:', PORT);
 });
 

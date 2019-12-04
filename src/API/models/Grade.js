@@ -15,7 +15,7 @@ var gradeSchema = new mongoose.Schema({
         required: true
     },
     review: {
-        type: [reviewSchema],
+        type: reviewSchema,
         required: true
     },
     professor: {
