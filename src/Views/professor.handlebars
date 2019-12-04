@@ -7,27 +7,28 @@
     <div id="statsDisplay" style="padding: 0 .5em">
         Weakness: {{professor.weakness}}<br>
         Strength: {{professor.strength}} MHz<br>
-        <!-- Need a #each maybe -->
-        Classes:  <a href="/class/{{professor.classes}}"> {{professor.classes}}</a>
-       
+        Classes:
+        {{#each classes}}
+        <a href="/class/{{this}}"> {{this}}</a>
+        {{/each}}
     </div>
     <hr>
 
     <h2>Reviews:</h2>
     <div id="voltsDisplay" style="padding: 0 .5em">
         {{#each reviews}}
-            <article>
-                <h2 class="title">Author: {{this.author}}</h2>
-                <hr>
-                <div class="content">
-                    Rating: {{this.rating}}
-                    <p>
-                        {{this.comment}}
-                    </p>
-                    {{this.weakness}}
-                
-                </div>
-            </article>
+        <article>
+            <h2 class="title">Author: {{this.author}}</h2>
+            <hr>
+            <div class="content">
+                Rating: {{this.rating}}
+                <p>
+                    {{this.comment}}
+                </p>
+                {{this.weakness}}
+
+            </div>
+        </article>
         </a>
         {{else}}
         <article id="noDisplay">

@@ -53,9 +53,7 @@ const addGrade = async (req, res) => {
                 } else {
                     console.log("You update the professor classes");
                 };
-            });
-            
-
+            });      
     } else {
         console.log("Professor doesn't exist.");
         return res.status(400).json({ error: "Professor doesn't exist. Please add the professor in form." })

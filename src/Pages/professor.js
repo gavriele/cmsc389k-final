@@ -9,7 +9,11 @@ const professorPage = async (req, res) => {
     });
     await resp.json()
         .then((json) => {
-            return res.render('professor', { professor: json.professor[0], reviews: json.professor[0].reviews });
+            return res.render('professor', {
+                professor: json.professor[0], 
+                reviews: json.professor[0].reviews,
+                classes: json.professor[0].classes
+            });
         });
 };
 
