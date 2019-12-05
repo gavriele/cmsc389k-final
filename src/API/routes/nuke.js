@@ -7,15 +7,11 @@ var Class = require('../models/Class');
 
 const nuke = async (req, res) => {
     // Drop the Grade Collection
-    Grade.remove({}, function (err) {
+    Grade.deleteMany({}, function (err) {
         if (err) return res.status(400).json({ error: "Nuke grade error." })
     });
-    Professor.remove({}, function (err) {
-        if (err) return res.status(400).json({ error: "Nuke professor error." })
-    });
-    Class.remove({}, function (err) {
-        if (err) return res.status(400).json({ error: "Nuke class error." })
-        return res.status(200).json({ success: "Great... you nuke our project." });
+    Class.updateMany({"$set": {"grades": []}}, function (err) {
+        if (err) return res.status(400).json({ error: "Nuke grade error." })
     });
 };
 

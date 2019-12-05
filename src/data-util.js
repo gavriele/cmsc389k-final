@@ -1,7 +1,6 @@
 var fs = require('fs');
 
 function loadData() {
-    console.log("loadData in data-util.js")
     return JSON.parse(fs.readFileSync('data.json'));
 }
 
