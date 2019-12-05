@@ -23,7 +23,8 @@ const addForm = async (req, res) => {
             strength: req.body.strength,
             weakness: req.body.weakness,
             classes: req.body.classes,
-            reviews: req.body.reviews
+            reviews: req.body.reviews,
+            description: req.body.description
         });
         professor.save(function (err) {
             if (err) throw err;
