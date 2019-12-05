@@ -22,7 +22,8 @@ var professorSchema = new mongoose.Schema({
         type: [reviewSchema]
     },
     description: {
-        type: [reviewSchema]
+        type: String,
+        required: true
     }
 });
 
