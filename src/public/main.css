@@ -99,6 +99,7 @@ i {
 
 .input-field {
     padding: 10px 0;
+    resize: none;
 }
 
 label {
@@ -123,6 +124,7 @@ textarea {
     padding: 10px;
     font-size: 20px;
     font-weight: bold;
+    resize:none;
     width: 97%;
     border-radius:.5em;
     outline:none;
