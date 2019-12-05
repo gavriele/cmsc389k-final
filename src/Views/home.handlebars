@@ -2,7 +2,7 @@
 	{{#if tag}}
 	<h2 onload="loaded()" id="fixpls" class="tagTitle">{{tag}} posts</h2>
 	{{else}}
-	<h2 class="tagTitle">Recent Posts:</h2>
+	<h2 class="tagTitle">Filter for your favorite (or least favorite) professors</h2>
 	{{/if}}
 	<input type="text" placeholder="Search" id="searchbar">
 </div>
@@ -19,8 +19,8 @@
 			<hr>
 			<div class="content">
 				Class: {{this.classes}} <br>
-				Weakness: {{this.weakness}}<br>
 				Strength: {{this.strength}}<br>
+				Weakness: {{this.weakness}}<br>				
 			</div>
 		</article>
 	</a>

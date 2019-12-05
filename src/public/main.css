@@ -11,15 +11,20 @@
 }
 
 .container {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
+}
+
+body {
+    background: lightsalmon;
 }
 
 #searchbar{
     margin-bottom:1em;
     border-radius: 0 0 1em 1em;
     border-top:none;
-    padding: .75em;
+    padding: 1em;
+    border-color: lightgreen;
 }
 
 
@@ -34,11 +39,14 @@ p {
     display: flex;
     justify-content: center;
     font-size: 2em;
-    font-weight: 50;
+    font-weight: 500;
+    stroke-width: 0px;
+    text-shadow: 1px 0px 20px whitesmoke;
 }
 
 h1 {
-    font-weight: 800;
+    font-weight: 500;
+    color: rgb(21, 85, 52);
 }
 
 a {
@@ -49,24 +57,18 @@ a {
 h1 > a:hover {
     transition: all 0.3s ease-in-out;
     stroke-width: 5px;
-    text-shadow: 1px 0px 20px rgb(13, 58, 103);
+    text-shadow: 1px 0px 20px lightgreen;
+    color: rgb(13, 103, 56);
 }
 
 a > article:hover {
     filter: brightness(.90);
-    text-shadow: 1px 0px 20px lightskyblue;
+    text-shadow: 1px 0px 20px lightgreen;
+    stroke-width: 1px;
 }
 
 i {
-    float:right; 
-}
-
-article {
-    padding: 10px;
-    background-color: #ecf0f1;
-    margin-bottom: 30px;
-    border-radius: .5em;
-    text-decoration: none;
+    float:left; 
 }
 
 .nav .tag {
@@ -76,14 +78,14 @@ article {
     color: black;
     font-size: 20px;
     border-radius: .5em;
-    border-color: rgb(13, 58, 103);
+    border-color: rgb(21, 85, 52);
     border: solid;
     border-width: 1px
 }
 
 .nav .tag:hover {
     color:white;
-    background-color: rgb(13, 58, 103);
+    background-color: rgb(21, 85, 52);
 }
 
 #tags {
@@ -128,13 +130,13 @@ textarea {
 
 button {
 	padding: 1em;
-	background-color: rgb(13, 58, 103);
+	background-color: rgb(21, 85, 52);
 	color: white;
 	font-size: 20px;
     font-weight: lighter;
     border-radius: .5em;
     padding:.75em;
-    border-color:lightskyblue;
+    border-color:lightgreen;
     border-width: 2px;
     cursor:pointer;
     outline:none;
@@ -142,7 +144,8 @@ button {
 
 button:hover{
     color:white;
-    background-color: lightskyblue;
+    background-color: lightgreen;
+    border-color: rgb(21, 85, 52)
 }
 
 #postBtn {
@@ -154,11 +157,6 @@ button:hover{
     width:33%;
     border-radius:1em;
 }
-
-
-/****************
-    BLOG POST 
-*****************/
 
 .title-container {
     text-align: center;
@@ -174,7 +172,7 @@ button:hover{
     padding: .5em 1em;
     border-radius: .3em;
     margin: 0 auto;
-    background-color: rgb(13, 58, 103);
+    background-color: rgb(21, 85, 52);
     color: white;
 }
 
@@ -183,7 +181,16 @@ button:hover{
 }
 
 .twoCols{
-    column-count: 1;
+    column-count: 2;
+}
+
+.twoCols > li{
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
 }
 
 .dropbtn {
@@ -200,8 +207,8 @@ button:hover{
   }
   
   .dropbtn:hover, .dropbtn:focus {
-    background-color: lightskyblue;
-    border-color: lightskyblue;
+    background-color: lightgreen;
+    border-color: lightgreen;
     outline:none;
   }
   
@@ -233,7 +240,7 @@ button:hover{
 }
   
 .dropdown a:hover {
-    background-color: lightskyblue;
+    background-color: lightgreen;
     color:white;
 }
   
@@ -241,9 +248,10 @@ button:hover{
 
 .tagTitle{
     border-radius: 1em 1em 0 0;
-    background-color: lightblue;
+    background-color: lightgreen;
     padding: .75em;
     margin-block-end:0;
+    font-weight: 500;
 }
 
 #bar{
@@ -259,7 +267,7 @@ select{
     font-size: 1.5em;
     font-weight: 100;
     -webkit-appearance: none;
-    padding:.5em;
+    padding: .3em .5em .3em .5em;
     min-width: fit-content;
     outline:none;
 }
@@ -271,7 +279,50 @@ select:hover{
     width:100%;
 }
 
+.mini-button {
+    line-height: 2em;
+    font-size: 2.5em;
+    width: 2em;
+    height: 2em;
+    border-radius: 2.5em;
+    background-color: lightgreen;
+    position: fixed;
+    bottom: 1em;
+    z-index: 1;
+    text-align: center;
+    align-items: center;
+    color: white;
+    box-shadow: rgb(89, 155, 89) 0 5px 0 0;
+    right: 1em;
+}
+
+.mini-button:hover {
+    background-color: rgb(21, 85, 52);
+    transform: translateY(4px);
+    box-shadow: none;
+    cursor: pointer;
+}
+
 #postContent{
-    background: lightblue;
+    background: rgb(230, 254, 230);
     color: black;
+    border-radius: 1em;
+}
+
+article {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    padding: 10px;
+    background-color: rgb(230, 254, 230);
+    margin-bottom: 30px;
+    border-radius: 1em;
+    text-decoration: none;
+}
+
+.subheader {
+    border-radius: .5em;
+    background-color: lightgreen;
+    padding: .5em 1em .5em 1em;
+    text-align: center;
 }

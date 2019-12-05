@@ -1,90 +1,38 @@
-<h1>Post your own silicon to see how it stacks up</h1>
+<h1 class="subheader">Add a new professor to the 'Dex</h1>
 <article>
     <form id="the_form" method="POST" action="/create" autocomplete="off" >
-        <div>
-            <label>Manufacturer</label>
-            <div class="manufacturer" id="intel">
-                <input type="radio" name="tags" value="Intel" checked>Intel
-            </div>
-            <div class="manufacturer">
-                <input type="radio" name="tags" value="AMD">AMD
-            </div>
+
+        <div class="input-field">
+            <label>Name *</label>
+            <input id="posttitle" value="" type="text" name="title" size="50" placeholder="No nicknames, only serious business here.">
         </div>
+
         <hr>
         <div class="input-field">
-            <label>Post Title: *</label>
-            <input id="posttitle" value="" type="text" name="title" size="50" placeholder="Write a name for your post...">
-        </div>
-        <div class="input-field">
-            <label>Slug: *</label>
-            <input id="postslug" value="" type="text" name="slug" size="50" placeholder="Give your post a unique identifier...">
-        </div>
-        <hr>
-        <div class="input-field">
-            <label>Processor Family:</label>
-            <select id="cpucategory" name="tags" type="text"> 
-                <option value="i9">Intel i9</option>
-                <option value="i7">Intel i7</option>
-                <option value="i5">Intel i5</option>
-                <option value="i3">Intel i3</option>'
+            <label>Department *</label>
+            <select id="cpucategory" name="tags" type="text">
+                <option value="na">Select</option>
+                <option value="cs">Computer Science</option>
+                <option value="math">Math</option>
+                <option value="astr">Astronomy</option>
+                <option value="atmoc">Atmospheric and Oceanic Science</option>
+                <option value="bio">Biology</option>
+                <option value="cbmg">Cell Biology and Molecular Genetics</option>
+                <option value="chm">Chemistry and Biochemistry</option>
+                <option value="ent">Entomology</option>
+                <option value="geo">Geology</option>
+                <option value="phys">Physics</option>
             </select>
         </div>
         <hr>
+    
         <div class="input-field">
-            <label>Other Tags:</label>
-            <input type="text" name="tags" id="otherTags" size="50" placeholder="Tag1 Tag2 Tag3 (seperated by spaces)">
-        </div>
-        <hr>
-        <div class="input-field">
-            <label style="padding-bottom: 0;">Clock Speeds: *</label>
-            <div style="display:inline-flex;">
-                <div class="input-field" style="margin: 0 .25em 0 0;">
-                <input type="text" name="multiplier" size="50" placeholder="CPU Multiplier" id="mult">
-                </div>
-                <div class="input-field" style="margin: 0 .25em 0 .25em;">
-                    <input type="text" name="bclk" size="50" placeholder="BCLK (MHz)" id="bclk">
-                </div>
-                <div class="input-field" style="margin: 0 .25em 0 .25em;">
-                    <input type="text" name="uncore" size="50" placeholder="Cache Multiplier" id="uncore">
-                </div>
-                <div class="input-field" style="margin: 0 0 0 .25em;">
-                    <input type="text" name="ramspeed" size="50" placeholder="RAM Speed (MHz)" id="ramspeed">
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="input-field">
-            <label style="padding-bottom: 0;">Voltages: </label>
-            <div style="display:inline-flex;">
-                <div class="input-field" style="margin: 0 .25em 0 0;">
-                <input type="text" name="vcore" size="50" placeholder="VCore">
-                </div>
-                <div class="input-field" style="margin: 0 .25em 0 .25em;">
-                    <input type="text" name="vccio" size="50" placeholder="VCCIO">
-                </div>
-                <div class="input-field" style="margin: 0 .25em 0 .25em;">
-                    <input type="text" name="vccsa" size="50" placeholder="VCCSA">
-                </div>
-                <div class="input-field" style="margin: 0 0 0 .25em;">
-                    <input type="text" name="vddr" size="50" placeholder="RAM Voltage">
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="input-field">
-            <label>Price:</label>
-            <input type="number" name="price" size="50" placeholder="USD" id="price">
-        </div>
-        <div class="input-field">
-            <label>Cinebench Score:</label>
-            <input type="number" name="r15" size="50" placeholder="Cinebench R15 Score" id="price">
-        </div>
-        <hr>
-        <div class="input-field">
-            <label>Content:</label>
+            <label>Review:</label>
             <textarea type="text" name="content" rows="6" placeholder="Write your post here..."></textarea>
         </div>
-        <button type="submit" id="submitbutton" onClick="return checkform()">Post Your Results</button>
+        <button type="submit" class="mini-button" onClick="return checkform()">
+            <i class="fa fa-arrow-right"></i>
+        </button>
     </form>
 </article>
 
@@ -104,7 +52,7 @@
         console.log("checking form");
         var title = $('#posttitle').val();
         var slug = $('#postslug').val();
-
+        var dept = $('#cpucategory').val();
         var mult = $('#mult').val();
         var bclk = $('#bclk').val();
         var uncore = $('#uncore').val();
@@ -112,7 +60,7 @@
         //var price = $("#price").val();
         //var score = $("#score").val();
 
-        if(title == "" || slug == "" || mult=="" || bclk==""||uncore==""||ram==""){
+        if(title == "" || slug == "" || mult=="" || bclk==""||uncore==""||ram==""||dept=="na"){
             alert("You must complete all required fields marked with a *");
             $(':input').removeAttr("disabled");
             return false;
