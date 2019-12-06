@@ -31,6 +31,9 @@
             <input value="" type="text" id="section" name="title" size="25" placeholder="Enter section number">
         </div>
 
+        <hr>
+        <br>
+
         <div class="input-field">
             <label>Strength</label>
             <input id="strength" value="" type="text" name="title" size="50" placeholder="What this prof is best at">
@@ -43,9 +46,11 @@
 
         <div class="input-field">
             <label>Description</label>
-            <textarea id="description" type="text" name="content" rows="6" placeholder="Give this prof a short description"></textarea>
+            <input id="description" type="text" name="content" rows="6" placeholder="Give this prof a short description">
         </div>
 
+        <hr>
+        <br>
         <div class="input-field">
             <div class="input-field">
                 <label>Rating *</label>
@@ -53,8 +58,8 @@
                     placeholder="Enter a number from 1-5">
             </div>
             <div class="input-field">
-                <label>Comment *</label>
-                <input value="" type="text" id="comment" name="title" size="25" placeholder="Enter your comment">
+                <label>Review *</label>
+                <textarea value="" type="text" id="review" name="title" size="25" placeholder="Give your review of this professor"></textarea>
             </div>
             <div class="input-field">
                 <label>Author *</label>
@@ -93,7 +98,7 @@
         var author = $('#author').val();
 
         if (title == "" || description == "" || section == "" || strength == "" || weakness == "" || reviews == "" || dept == "na"
-            || rating == "" || comment == "" || author == "") {
+            || rating == "" || author == "") {
             alert("You must complete all required fields marked with a *");
             $(':input').removeAttr("disabled");
             return false;
