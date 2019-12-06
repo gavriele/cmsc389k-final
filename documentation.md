@@ -3,7 +3,7 @@
 
 ---
 
-Name: Gabriel Epstein, Michael Zheng, Justin Chao
+Name: Gabriel Epstein (0101), Michael Zheng (0201), Justin Chao (0101)
 
 Date: December 6th, 2019
 
@@ -169,24 +169,26 @@ reviewSchema = {
 
 Example Node.js POST request to endpoint: 
 ```javascript
-var request = require("request");
-
-var options = { 
-    method: 'POST',
-    url: 'http://localhost:3000/api/post/curve',
-    headers: { 
-        'content-type': 'application/x-www-form-urlencoded' 
-    },
-    form: { 
-       class: 'CMSC216',
-    } 
-};
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
+/*---------------Inside of form.handlebars---------------*/
+$.ajax({
+    type: "POST",
+    url: 'http://localhost:3000/api/post/form',
+    contentType: "application/json",
+    data: sendInfo,
+    sucess: function (data, status) {
+        console.log(data);
+    }
 });
+/*---------------Inside of index.js---------------*/
+var addForm = require('./API/routes/addForm');
+app.use("/api/post/form", addForm);
+
+/*-------Inside of /API/routes/addForm.js---------*/
+const addForm = async (req, res) => {
+   // Saving professor to the mongodb
+};
+router.post('/', addForm);
+module.exports = router;
 ```
 
 ### 5. Modules
@@ -217,6 +219,7 @@ request(options, function (error, response, body) {
 
 1. Bootstrap
 2. Chalk
+3. Node-fetch
 
 ### 7. UI
 

@@ -1,1 +1,10 @@
 # cmsc389k-final
+Welcome to the professordex! Here you can view professor stats, post new professors, view classes and submit grades. See documentation.md for details on how to use the API.
+
+The site's home page will display a list of all the professors whose stats are stored on the site. You can search for a professor using the search bar at the top. If you click a specific professor, you will be taken to that professor's page. You can also click the "Add a professor" button to go to the submit a new professor form page, click "About Us" to learn all about the wonderful altruistic people that created this wonderful website, or click the "Nuke the grades!" button, but BEWARE! This button does what is says, and the grades are not backed up anywhere, so only click it if you are having a particularly nasty day. If there is a grade you do not like, we recommend utilizes the curve API endpoint before resorting to destroying everyon else's hard work, but sometimes you gotta do what you gotta do.
+
+On a professor page, you can view important stats about a professor like their strengths and weaknesses, the classes they teach, and reviews submitted about them. If you click one of the classes, you will be taken to a class page.
+
+On a class page, you can view all the grades submitted for the class. At the bottom, you can use a form to submit a new grade for the class.
+
+On the form to add a new professor page, you can fill out random fields to create a new professor. Most of the information submitted through this form is kinda useless, much like most of the information that these professors teach.
