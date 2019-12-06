@@ -10,13 +10,12 @@
     <h2>Grades:</h2>
     <div id="voltsDisplay" style="padding: 0 .5em">
         {{#each grades}}
-    
-            <article>
-                <h2 class="title">Grade: {{this}}</h2>
-                <hr>
-                
-            </article>
-        </a>
+
+        <article>
+            <h2 class="title">Grade: {{this}}</h2>
+            <hr>
+
+        </article>
         {{else}}
         <article id="noDisplay">
             <h1>There are no grades yet :(</h1>
@@ -35,33 +34,39 @@
     </form>
     <hr>
 </div>
-
 <script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
 
     function realspeed(multiplier, bclk) {
         $("#statsDisplay").append(`Effective Clockspeed: ${multiplier * bclk}`);
     }
-
+    let grade;
     var socket = io();
-    $('#the_form').submit(function(){ //When send button is pressed
-        var grade = parseFloat($('#grade').val());
+    $('#the_form').submit(function () { //When send button is pressed
+        grade = parseFloat($('#grade').val());
         var class_str = $('#class_title').text();
         var rating = parseFloat($('#rating').val());
         var comment = $('#comment').val();
         var author = $('#author').val();
         var professor = $('#prof_title').text();
-        console.log("grade is " + grade + " class is " + class_str + " rating is " + rating + " comment is " + comment + " author is " + author + " professor is " + professor); 
-      socket.emit('new grade', {grade: grade, class: class_str, review: {rating: rating, comment: comment, author: author}, professor: professor});
-      $('#grade').val('');
+        console.log("grade is " + grade + " class is " + class_str + " rating is " + rating + " comment is " + comment + " author is " + author + " professor is " + professor);
+        socket.emit('new grade', { grade: grade, class: class_str, review: { rating: rating, comment: comment, author: author }, professor: professor });
+        $('#grade').val('');
         $('#rating').val('');
         $('#comment').val('');
         $('#author').val('');
-      return false; //Ensures the page does not reload
+        return false; //Ensures the page does not reload
     });
 
-    socket.on('grade added', function(msg) {
+    socket.on('grade added', function (msg) {
         console.log("grade added msg: " + msg);
         alert(msg);
+        var article = document.createElement('article')
+        var h2 = document.createElement('h2')
+        h2.textContent = "Grade: " + grade;
+        var hr = document.createElement('hr')
+        article.appendChild(h2)
+        article.appendChild(hr)
+        $('#voltsDisplay').append(article);
     });
 </script>
