@@ -44,6 +44,10 @@ p {
     text-shadow: 1px 0px 20px whitesmoke;
 }
 
+#pageTitle:hover {
+    text-shadow: 1px 0px 20px green;
+}
+
 h1 {
     font-weight: 500;
     color: rgb(13, 103, 56);
@@ -88,7 +92,7 @@ i {
     background-color: rgb(13, 103, 56);
 }
 
-#tags {
+.center {
     justify-content: center;
     display:flex;
 }
@@ -154,8 +158,8 @@ button:hover{
     justify-content: center;
 }
 
-#postBtn > button{
-    width:33%;
+#postBtn > div{
+    margin: 0 2em;
     border-radius:1em;
 }
 
