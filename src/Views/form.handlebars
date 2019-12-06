@@ -92,7 +92,7 @@
         var strength = $('#strength').val();
         var weakness = $('#weakness').val();
         var reviews = $('#review').val();
-        var description = $('#descrip').val();
+        var description = $('#description').val();
         var rating = $('#rating').val();
         var comment = $('#comment').val();
         var author = $('#author').val();
@@ -104,7 +104,7 @@
             return false;
         }
         else {
-            alert("You add a professor");
+            alert("You added a professor");
             var classes = dept + section;
             console.log("dep ", dept)
             console.log("name ", title)
@@ -126,7 +126,7 @@
                     comment: comment,
                     author: author
                 }],
-                description: description
+                description: description,
             });
             console.log(sendInfo);
             $.ajax({
