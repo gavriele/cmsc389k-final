@@ -1,6 +1,5 @@
 <h1 class="subheader">Add a new professor to the 'Dex</h1>
 <article>
-    <form id="the_form" autocomplete="off">
         <div class="input-field">
             <label>Name *</label>
             <input id="posttitle" value="" type="text" name="title" size="50"
@@ -69,7 +68,6 @@
         <button type="submit" class="mini-button" onClick="return checkform()">
             <i class="fa fa-plus"></i>
         </button>
-    </form>
 </article>
 
 <script type="text/javascript">
@@ -139,6 +137,9 @@
                     console.log(data);
                 }
             });
+           // window.location.replace("http://localhost:3000/");
+
+          //  location.href='http://localhost:3000/';
         };
     };
 </script>
