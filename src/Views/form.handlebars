@@ -1,8 +1,6 @@
 <h1 class="subheader">Add a new professor to the 'Dex</h1>
 <article>
-    <!-- <form id="the_form" method="POST" action="/create" autocomplete="off" > -->
     <form id="the_form" autocomplete="off">
-
         <div class="input-field">
             <label>Name *</label>
             <input id="posttitle" value="" type="text" name="title" size="50"
@@ -13,16 +11,16 @@
             <label>Department *</label>
             <select id="cpucategory" name="tags" type="text">
                 <option value="na">Select</option>
-                <option value="cs">Computer Science</option>
-                <option value="math">Math</option>
-                <option value="astr">Astronomy</option>
-                <option value="atmoc">Atmospheric and Oceanic Science</option>
-                <option value="bio">Biology</option>
-                <option value="cbmg">Cell Biology and Molecular Genetics</option>
-                <option value="chm">Chemistry and Biochemistry</option>
-                <option value="ent">Entomology</option>
-                <option value="geo">Geology</option>
-                <option value="phys">Physics</option>
+                <option value="CMSC">Computer Science</option>
+                <option value="MATH">Math</option>
+                <option value="ASTR">Astronomy</option>
+                <option value="AOSC">Atmospheric and Oceanic Science</option>
+                <option value="BIOL">Biology</option>
+                <option value="CBMG">Cell Biology and Molecular Genetics</option>
+                <option value="CHEM">Chemistry and Biochemistry</option>
+                <option value="ENTM">Entomology</option>
+                <option value="GEOG">Geology</option>
+                <option value="PHYSC">Physics</option>
             </select>
         </div>
 
@@ -41,12 +39,14 @@
 
         <div class="input-field">
             <label>Weakness</label>
-            <input id="weakness" value="" type="text" name="title" size="50" placeholder="What this professor isn't that good at">
+            <input id="weakness" value="" type="text" name="title" size="50"
+                placeholder="What this professor isn't that good at">
         </div>
 
         <div class="input-field">
             <label>Description</label>
-            <input id="description" type="text" name="content" rows="6" placeholder="Give this prof a short description">
+            <input id="description" type="text" name="content" rows="6"
+                placeholder="Give this prof a short description">
         </div>
 
         <hr>
@@ -54,12 +54,12 @@
         <div class="input-field">
             <div class="input-field">
                 <label>Rating *</label>
-                <input value="" type="text" id="rating" name="title" size="25"
-                    placeholder="Enter a number from 1-5">
+                <input value="" type="text" id="rating" name="title" size="25" placeholder="Enter a number from 1-5">
             </div>
             <div class="input-field">
                 <label>Review *</label>
-                <textarea value="" type="text" id="review" name="title" size="25" placeholder="Give your review of this professor"></textarea>
+                <textarea value="" type="text" id="review" name="title" size="25"
+                    placeholder="Give your review of this professor"></textarea>
             </div>
             <div class="input-field">
                 <label>Author *</label>
@@ -104,9 +104,7 @@
             return false;
         }
         else {
-
             alert("You add a professor");
-
             var classes = dept + section;
             console.log("dep ", dept)
             console.log("name ", title)
@@ -114,12 +112,10 @@
             console.log("section ", section)
             console.log("strength ", strength)
             console.log("weakness ", weakness)
-            //console.log("reviews ", reviews)
             console.log("description ", description)
             console.log("author ", author)
             console.log("comment ", comment)
             console.log("rating ", rating)
-
             var sendInfo = JSON.stringify({
                 name: title,
                 strength: [strength],
@@ -133,7 +129,6 @@
                 description: description
             });
             console.log(sendInfo);
-
             $.ajax({
                 type: "POST",
                 url: 'http://localhost:3000/api/post/form',
@@ -144,10 +139,6 @@
                     console.log(data);
                 }
             });
-
-
-
-            return false;
-        }
+        };
     };
 </script>
