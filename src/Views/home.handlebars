@@ -18,9 +18,6 @@
 		<button type="submit" id="about" onClick="window.location.pathname='/about'">About Us</button>
 	</div>
 	<div id="">
-		<button type="submit" id="curve">Curve the grades!</button>
-	</div>
-	<div id="">
 		<button type="submit" id="nuke">Nuke the grades!</button>
 	</div>
 </div>
@@ -93,17 +90,5 @@
 			}
 		});
 		alert("You nuked the grades 💀");
-	});
-	$("#curve").click(function () {
-
-		$.ajax({
-			type: "POST",
-			url: 'http://localhost:3000/api/post/curve',
-			sucess: function (data, status) {
-				console.log(data);
-			}
-		});
-		alert("At your command, I grant you 100!");
-
 	});
 </script>
