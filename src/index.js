@@ -71,6 +71,8 @@ app.get("/", (req, res) => { getHomePage(req, res) });
 app.get("/form", (req, res) => { res.render('form') });
    // probably should rename the create handlebar 
 app.get("/about", (req, res) => { res.render('about') });
+app.get("/professordex", (req, res) => { res.render('professordex') });
+
 app.get('/professor/:name', (req, res) => { getProfessorPage(req, res) });
 app.get("/class/:title", (req, res) => { getClassPage(req, res) });
 
