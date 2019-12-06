@@ -36,9 +36,13 @@
         {{/each}}
     </div>
 </div>
-<button type="submit" class="mini-button" onClick="return fire()">
-    Fire this Prof Prof!
-</button>
+<br>
+<div class="content content-postContent">
+    <button type="submit" class="submitbutton" id="firebutton" onClick="return fire()">
+        Fire this professor!
+    </button>
+</div>
+
 <script type="text/javascript">
     function fire() {
         var professor = "{{professor.name}}";
@@ -50,7 +54,7 @@
                 console.log(data);
             }
         });
-        alert("You feel good about this!");
+        alert("Damn it feels good to be a gangsta 😎");
         location.href = 'http://localhost:3000/';
     };
 </script>

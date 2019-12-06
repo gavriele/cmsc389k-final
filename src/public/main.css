@@ -293,8 +293,13 @@ select:hover{
     filter: brightness(.90);
 }
 
-#submitbutton{
+.submitbutton{
+    margin: .5em 0;
     width:100%;
+}
+
+#firebutton:hover {
+    background-color: red;
 }
 
 .mini-button {
