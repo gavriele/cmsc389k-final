@@ -3,14 +3,14 @@
     <h2 id="class_title">{{class.title}}</h2>
 
     <div id="statsDisplay" style="padding: 0 .5em">
-        <div id="prof_title">Professor: {{class.professor}}</div>
+        <div id="prof_title" value={{class.professor}}>Professor: {{class.professor}}</div>
     </div>
 </div>
 
 <br>
 <article>
     <div class="content content-postContent">
-        
+
         <h2>Grades:</h2>
         <div id="voltsDisplay" style="padding: 0 .5em">
             {{#each grades}}
@@ -31,29 +31,30 @@
         <form id="the_form" action="">
             <div class="input-field">
                 <label>Grade</label>
-                <input id="grade" autocomplete="off" placeholder="Your final grade/100"/>
+                <input id="grade" autocomplete="off" placeholder="Your final grade/100" />
             </div>
-            
+
             <div class="input-field">
                 <label>Difficulty Rating</label>
-                <input id="rating" autocomplete="off" placeholder="How hard would you rate this class from 1 (easy) to 5 (hard)?"/>
+                <input id="rating" autocomplete="off"
+                    placeholder="How hard would you rate this class from 1 (easy) to 5 (hard)?" />
             </div>
 
             <div class="input-field">
                 <label>Comments</label>
-                <input id="comment" autocomplete="off" placeholder="Thoughts and comments about this class"/>
+                <input id="comment" autocomplete="off" placeholder="Thoughts and comments about this class" />
             </div>
-            
+
             <div class="input-field">
                 <label>Author</label>
-                <input id="author" autocomplete="off" placeholder="Your name"/>
+                <input id="author" autocomplete="off" placeholder="Your name" />
             </div>
-            
-            <button type="submit" class="mini-button" onClick="return checkform()">
+
+            <button type="submit" class="mini-button">
                 <i class="fa fa-plus"></i>
             </button>
         </form>
-        
+
     </div>
 </article>
 <script src="/socket.io/socket.io.js"></script>
@@ -70,7 +71,8 @@
         var rating = parseFloat($('#rating').val());
         var comment = $('#comment').val();
         var author = $('#author').val();
-        var professor = $('#prof_title').text();
+        var professor = "{{class.professor}}";
+
         console.log("grade is " + grade + " class is " + class_str + " rating is " + rating + " comment is " + comment + " author is " + author + " professor is " + professor);
         socket.emit('new grade', { grade: grade, class: class_str, review: { rating: rating, comment: comment, author: author }, professor: professor });
         $('#grade').val('');

@@ -10,11 +10,15 @@ async function addGradeSocket(new_grade) {
     // Check if the professor exist. If exist tell user to add
     // the new professor
     let regexProf = new RegExp('^' + new_grade.professor + '$', "i");
+    console.log("searching for the professor ", JSON.stringify(new_grade.professor));
+       // console.log("searching for the professor wihout json ", (new_grade));
+
     const profExist = await Professor.findOne({ "name": regexProf }, function (err, result) {
         if (err) {
             console.log("Professor doesn't exist you moron!");
             return false;
         }
+        console.log("find one ", result)
     });
     if (profExist) {
         console.log("Professor exist.");
@@ -46,7 +50,7 @@ async function addGradeSocket(new_grade) {
                 };
             });
     } else {
-        console.log("Professor doesn't exist.");
+        console.log("Professor doesn't exist!?!.");
         return false;
     };
     // Check if class exist
