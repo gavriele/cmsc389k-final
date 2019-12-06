@@ -41,7 +41,10 @@
 </button>
 <script type="text/javascript">
     function fire() {
-        var professor = $('#statsDisplay').attr('value');
+      //  var professor = $('#statsDisplay').attr('value');
+       // console.log("fire form =  ", professor);
+        var professor = "{{professor.name}}";
+      //  console.log("foo form =  ", foo);
         console.log("fire form =  ", professor);
 
         $.ajax({

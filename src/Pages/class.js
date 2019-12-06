@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const classPage = async (req, res) => {
+    console.log("inside class page")
     let resp = await fetch(`http://localhost:3000/api/class/${req.params.title}`, {
         method: "GET",
         headers: {
