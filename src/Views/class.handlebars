@@ -13,22 +13,24 @@
         
         <h2>Grades:</h2>
         <div id="voltsDisplay" style="padding: 0 .5em">
-            {{#each grades}}
-            <article>
-                <h2 class="title">Grade: {{this}}</h2>
-                <hr>
-
-            </article>
+            {{#if grades}}
+                {{#each grades}}
+                    <article>
+                        <h2 class="title">Grade: {{this}}</h2>
+                        <hr>
+                        hello world
+                    </article>
+                {{/each}}
             {{else}}
-            <article id="noDisplay">
-                <h1>There are no grades yet :(</h1>
-                <h4>Why don't you add your grade for this class!</h4>
-            </article>
-            {{/each}}
+                <article id="noDisplay">
+                    <h1>There are no grades yet :(</h1>
+                    <h4>Why don't you add your grade for this class!</h4>
+                </article>
+            {{/if}}
         </div>
 
         <h2>Add a new grade to this class:</h2>
-        <form id="the_form" action="">
+        <form id="the_form" autocomplete="off">
             <div class="input-field">
                 <label>Grade</label>
                 <input id="grade" autocomplete="off" placeholder="Your final grade/100"/>
@@ -67,7 +69,7 @@
     $('#the_form').submit(function () { //When send button is pressed
         grade = parseFloat($('#grade').val());
         var class_str = $('#class_title').text();
-        var rating = parseFloat($('#rating').val());
+        var rating = $('#rating').val();
         var comment = $('#comment').val();
         var author = $('#author').val();
         var professor = $('#prof_title').text();
