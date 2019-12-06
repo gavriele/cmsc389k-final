@@ -43,19 +43,21 @@
                 <textarea type="text" id="descrip" name="content" rows="6"
                     placeholder="Write your description here..."></textarea>
             </div>
+            <hr>
             <div class="input-field">
-                <label>Review: *</label>
+                <label>Review: </label>
                 <div class="input-field">
                     <label>Rating *</label>
-                    <input value="" type="text" id="rating" name="title" size="25" placeholder="Enter section number">
+                    <input value="" type="text" id="rating" name="title" size="25"
+                        placeholder="Enter a number from 1-5">
                 </div>
                 <div class="input-field">
                     <label>Comment *</label>
-                    <input value="" type="text" id="comment" name="title" size="25" placeholder="Enter section number">
+                    <input value="" type="text" id="comment" name="title" size="25" placeholder="Enter your comment">
                 </div>
                 <div class="input-field">
                     <label>Author *</label>
-                    <input value="" type="text" id="author" name="title" size="25" placeholder="Enter section number">
+                    <input value="" type="text" id="author" name="title" size="25" placeholder="Enter your name">
                 </div>
             </div>
             <button type="submit" class="mini-button" onClick="return checkform()">
@@ -89,7 +91,8 @@
         var comment = $('#comment').val();
         var author = $('#author').val();
 
-        if (title == "" || description == "" || section == "" || strength == "" || weakness == "" || reviews == "" || dept == "na") {
+        if (title == "" || description == "" || section == "" || strength == "" || weakness == "" || reviews == "" || dept == "na"
+            || rating == "" || comment == "" || author == "") {
             alert("You must complete all required fields marked with a *");
             $(':input').removeAttr("disabled");
             return false;
@@ -105,28 +108,37 @@
             console.log("section ", section)
             console.log("strength ", strength)
             console.log("weakness ", weakness)
-            console.log("reviews ", reviews)
+            //console.log("reviews ", reviews)
             console.log("description ", description)
-            /*
-            var sendInfo = {
+            console.log("author ", author)
+            console.log("comment ", comment)
+            console.log("rating ", rating)
+
+            var sendInfo = JSON.stringify({
                 name: title,
                 strength: [strength],
                 weakness: [weakness],
                 classes: [classes],
-                reviews: [ {
-
+                reviews: [{
+                    rating: rating,
+                    comment: comment,
+                    author: author
                 }],
                 description: description
-            };
-            /*
+            });
+            console.log(sendInfo);
+
             $.ajax({
                 type: "POST",
-                url: 'http://localhost:3000/api/form',
+                url: 'http://localhost:3000/api/post/form',
+                contentType: "application/json",
+
+                data: sendInfo,
                 sucess: function (data, status) {
                     console.log(data);
                 }
             });
-            */
+
 
 
             return false;
