@@ -28,10 +28,7 @@ const addForm = async (req, res) => {
         });
         professor.save(function (err) {
             if (err) throw err;
-            //return res.status(200).json({ success: 'Successfully insert professor' });
         });
-
-
         // Check if class exist
         let regexClass = new RegExp('^' + req.body.classes + '$', "i");
         console.log("looking for a class: ", req.body.classes);
@@ -47,11 +44,9 @@ const addForm = async (req, res) => {
         // If class doesn't exist, create a new class
         if (!classExist) {
             console.log("Class doesn't exist. Sending ", req.body.classes[0]);
-
             var newClass = new Class({
                 title: req.body.classes[0],
                 professor: req.body.name,
-               // grades: 0
             });
             newClass.save(function (err) {
                 if (err) return res.status(400).json({ error: "New class creation fail!!!", err });
@@ -60,7 +55,7 @@ const addForm = async (req, res) => {
         }
     } else {
         return res.status(400).json({ error: 'Professor already exist you moron!' });
-    }
+    };
 };
 
 router.post('/', addForm);

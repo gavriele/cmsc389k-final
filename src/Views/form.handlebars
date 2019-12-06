@@ -1,10 +1,12 @@
 <h1 class="subheader">Add a new professor to the 'Dex</h1>
 <article>
-    <form id="the_form" method="POST" action="/create" autocomplete="off" >
+    <!-- <form id="the_form" method="POST" action="/create" autocomplete="off" > -->
+    <form id="the_form" autocomplete="off">
 
         <div class="input-field">
             <label>Name *</label>
-            <input id="posttitle" value="" type="text" name="title" size="50" placeholder="No nicknames, only serious business here.">
+            <input id="posttitle" value="" type="text" name="title" size="50"
+                placeholder="No nicknames, only serious business here.">
         </div>
 
         <hr>
@@ -23,23 +25,49 @@
                 <option value="geo">Geology</option>
                 <option value="phys">Physics</option>
             </select>
-        </div>
-        <hr>
-    
-        <div class="input-field">
-            <label>Review:</label>
-            <textarea type="text" name="content" rows="6" placeholder="Write your post here..."></textarea>
-        </div>
-        <button type="submit" class="mini-button" onClick="return checkform()">
-            <i class="fa fa-arrow-right"></i>
-        </button>
+            <div class="input-field">
+                <label>Section *</label>
+                <input value="" type="text" id="section" name="title" size="25" placeholder="Enter section number">
+            </div>
+            <div class="input-field">
+                <label>Weakness *</label>
+                <input value="" type="text" id="weakness" name="title" size="25" placeholder="Enter section number">
+            </div>
+            <div class="input-field">
+                <label>Strength *</label>
+                <input value="" type="text" id="strength" name="title" size="25" placeholder="Enter section number">
+            </div>
+            <hr>
+            <div class="input-field">
+                <label>Description: *</label>
+                <textarea type="text" id="descrip" name="content" rows="6"
+                    placeholder="Write your description here..."></textarea>
+            </div>
+            <div class="input-field">
+                <label>Review: *</label>
+                <div class="input-field">
+                    <label>Rating *</label>
+                    <input value="" type="text" id="rating" name="title" size="25" placeholder="Enter section number">
+                </div>
+                <div class="input-field">
+                    <label>Comment *</label>
+                    <input value="" type="text" id="comment" name="title" size="25" placeholder="Enter section number">
+                </div>
+                <div class="input-field">
+                    <label>Author *</label>
+                    <input value="" type="text" id="author" name="title" size="25" placeholder="Enter section number">
+                </div>
+            </div>
+            <button type="submit" class="mini-button" onClick="return checkform()">
+                <i class="fa fa-arrow-right"></i>
+            </button>
     </form>
 </article>
 
 <script type="text/javascript">
-    $(".manufacturer").on("change", function(){
+    $(".manufacturer").on("change", function () {
         var selector = '<option value="i9">i9</option>\n<option value="i7">i7</option>\n<option value="i5">i5</option>\n<option value="i3">i3</option>';
-        if($('input[name=company]:checked').val()=="Intel"){
+        if ($('input[name=company]:checked').val() == "Intel") {
             var selector = '<option value="i9">Intel i9</option>\n<option value="i7">Intel i7</option>\n<option value="i5">Intel i5</option>\n<option value="i3">Intel i3</option>';
         }
         else
@@ -48,25 +76,60 @@
         $("#cpucategory").append(selector);
     })
 
-    function checkform(){
+    function checkform() {
         console.log("checking form");
         var title = $('#posttitle').val();
-        var slug = $('#postslug').val();
         var dept = $('#cpucategory').val();
-        var mult = $('#mult').val();
-        var bclk = $('#bclk').val();
-        var uncore = $('#uncore').val();
-        var ram = $('#ramspeed').val();
-        //var price = $("#price").val();
-        //var score = $("#score").val();
+        var section = $('#section').val();
+        var strength = $('#strength').val();
+        var weakness = $('#weakness').val();
+        var reviews = $('#review').val();
+        var description = $('#descrip').val();
+        var rating = $('#rating').val();
+        var comment = $('#comment').val();
+        var author = $('#author').val();
 
-        if(title == "" || slug == "" || mult=="" || bclk==""||uncore==""||ram==""||dept=="na"){
+        if (title == "" || description == "" || section == "" || strength == "" || weakness == "" || reviews == "" || dept == "na") {
             alert("You must complete all required fields marked with a *");
             $(':input').removeAttr("disabled");
             return false;
         }
-        else{
-            return true;
+        else {
+
+            alert("You add a professor");
+
+            var classes = dept + section;
+            console.log("dep ", dept)
+            console.log("name ", title)
+            console.log("class", classes)
+            console.log("section ", section)
+            console.log("strength ", strength)
+            console.log("weakness ", weakness)
+            console.log("reviews ", reviews)
+            console.log("description ", description)
+            /*
+            var sendInfo = {
+                name: title,
+                strength: [strength],
+                weakness: [weakness],
+                classes: [classes],
+                reviews: [ {
+
+                }],
+                description: description
+            };
+            /*
+            $.ajax({
+                type: "POST",
+                url: 'http://localhost:3000/api/form',
+                sucess: function (data, status) {
+                    console.log(data);
+                }
+            });
+            */
+
+
+            return false;
         }
-    }
+    };
 </script>
