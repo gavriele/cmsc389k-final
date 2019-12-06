@@ -46,7 +46,7 @@ p {
 
 h1 {
     font-weight: 500;
-    color: rgb(21, 85, 52);
+    color: rgb(13, 103, 56);
 }
 
 a {
@@ -78,14 +78,14 @@ i {
     color: black;
     font-size: 20px;
     border-radius: .5em;
-    border-color: rgb(21, 85, 52);
+    border-color: rgb(13, 103, 56);
     border: solid;
     border-width: 1px
 }
 
 .nav .tag:hover {
     color:white;
-    background-color: rgb(21, 85, 52);
+    background-color: rgb(13, 103, 56);
 }
 
 #tags {
@@ -132,7 +132,7 @@ textarea {
 
 button {
 	padding: 1em;
-	background-color: rgb(21, 85, 52);
+	background-color: rgb(13, 103, 56);
 	color: white;
 	font-size: 20px;
     font-weight: lighter;
@@ -173,7 +173,7 @@ button:hover{
     padding: .5em 1em;
     border-radius: .5em;
     margin: 0 auto;
-    background-color: rgb(21, 85, 52);
+    background-color: rgb(13, 103, 56);
     color: white;
 }
 
@@ -185,7 +185,7 @@ button:hover{
     border-radius: .5em;
     border-color: lightgreen;
     border-width: 1px;
-    background-color: rgb(21, 85, 52);
+    background-color: rgb(13, 103, 56);
     padding: .1em .4em;
 }
 
@@ -194,7 +194,7 @@ button:hover{
 }
 
 .twoCols{
-    column-count: 2;
+    column-count: 3;
 }
 
 .twoCols > li{
@@ -283,6 +283,7 @@ select{
     padding: .3em .5em .3em .5em;
     min-width: fit-content;
     outline:none;
+    border-radius: .2em;
 }
 select:hover{
     filter: brightness(.90);
@@ -310,8 +311,8 @@ select:hover{
 }
 
 button.mini-button:hover {
-    background-color: rgb(21, 85, 52);
-    border-color: rgb(21, 85, 52);
+    background-color: rgb(13, 103, 56);
+    border-color: rgb(13, 103, 56);
     transform: translateY(4px);
     box-shadow: none;
     cursor: pointer;
@@ -329,7 +330,7 @@ article {
     break-inside: avoid;
     padding: 10px;
     background-color: rgb(230, 254, 230);
-    margin-bottom: 30px;
+    margin-bottom: 1em;
     border-radius: 1em;
     text-decoration: none;
 }

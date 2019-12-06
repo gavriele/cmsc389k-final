@@ -33,12 +33,12 @@
         <br>
 
         <div class="input-field">
-            <label>Strength</label>
+            <label>Strength *</label>
             <input id="strength" value="" type="text" name="title" size="50" placeholder="What this prof is best at">
         </div>
 
         <div class="input-field">
-            <label>Weakness</label>
+            <label>Weakness *</label>
             <input id="weakness" value="" type="text" name="title" size="50"
                 placeholder="What this professor isn't that good at">
         </div>
@@ -67,7 +67,7 @@
             </div>
         </div>
         <button type="submit" class="mini-button" onClick="return checkform()">
-            <i class="fa fa-arrow-right"></i>
+            <i class="fa fa-plus"></i>
         </button>
     </form>
 </article>
@@ -97,7 +97,7 @@
         var comment = $('#comment').val();
         var author = $('#author').val();
 
-        if (title == "" || description == "" || section == "" || strength == "" || weakness == "" || reviews == "" || dept == "na"
+        if (title == "" || section == "" ||description==""|| strength == "" || weakness == "" || reviews == "" || dept == "na"
             || rating == "" || author == "") {
             alert("You must complete all required fields marked with a *");
             $(':input').removeAttr("disabled");
