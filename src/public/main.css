@@ -147,7 +147,6 @@ button {
 button:hover{
     color:white;
     background-color: lightgreen;
-    border-color: rgb(21, 85, 52)
 }
 
 #postBtn {
@@ -298,8 +297,9 @@ select:hover{
     right: 1em;
 }
 
-.mini-button:hover {
+button.mini-button:hover {
     background-color: rgb(21, 85, 52);
+    border-color: rgb(21, 85, 52);
     transform: translateY(4px);
     box-shadow: none;
     cursor: pointer;
@@ -327,4 +327,9 @@ article {
     background-color: lightgreen;
     padding: .5em 1em .5em 1em;
     text-align: center;
+}
+
+.fa {
+    line-height: 0;
+    font-size: .5em;
 }
