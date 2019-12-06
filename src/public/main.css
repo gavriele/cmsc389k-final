@@ -11,7 +11,7 @@
 }
 
 .container {
-    width: 70%;
+    width: 75%;
     margin: 0 auto;
 }
 
@@ -171,7 +171,7 @@ button:hover{
 
 .content {
     padding: .5em 1em;
-    border-radius: .3em;
+    border-radius: .5em;
     margin: 0 auto;
     background-color: rgb(21, 85, 52);
     color: white;
@@ -179,6 +179,18 @@ button:hover{
 
 .content a {
     color: white;
+}
+
+.content-postContent a{
+    border-radius: .5em;
+    border-color: lightgreen;
+    border-width: 1px;
+    background-color: rgb(21, 85, 52);
+    padding: .1em .4em;
+}
+
+.content-postContent a:hover {
+    color: lightgreen;
 }
 
 .twoCols{
@@ -305,7 +317,7 @@ button.mini-button:hover {
     cursor: pointer;
 }
 
-#postContent{
+.content-postContent{
     background: rgb(230, 254, 230);
     color: black;
     border-radius: 1em;

@@ -12,7 +12,8 @@ const professorPage = async (req, res) => {
             return res.render('professor', {
                 professor: json.professor[0], 
                 reviews: json.professor[0].reviews,
-                classes: json.professor[0].classes
+                classes: json.professor[0].classes,
+                description: json.professor[0].description,
             });
         });
 };
