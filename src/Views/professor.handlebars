@@ -1,6 +1,6 @@
 <div class="content content-postContent">
     <h1 class="subheader">Professor {{professor.name}}</h1>
-    <div id="statsDisplay" style="padding: 0 .5em">
+    <div id="statsDisplay" value={{professor.name}} style="padding: 0 .5em">
         Strength: {{professor.strength}}<br>
         Weakness: {{professor.weakness}}<br>
         Classes: {{#each classes}}
@@ -35,3 +35,24 @@
         </article>
         {{/each}}
     </div>
+</div>
+<button type="submit" class="mini-button" onClick="return fire()">
+    Fire this Prof Prof!
+</button>
+<script type="text/javascript">
+
+    function fire() {
+
+        var professor = $('#statsDisplay').attr('value');
+        console.log("fire form =  ", professor);
+
+        $.ajax({
+            type: "DELETE",
+            url: `http://localhost:3000/api/fire/${professor}`,
+            sucess: function (data, status) {
+                console.log(data);
+            }
+        });
+        alert("You feel good about this!");
+    };
+</script>
